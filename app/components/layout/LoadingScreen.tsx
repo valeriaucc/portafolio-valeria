@@ -65,13 +65,7 @@ export default function LoadingScreen() {
         transition: "opacity 0.6s ease",
       }}
     >
-      {/* Líneas de guía sutiles */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div style={{ position: "absolute", top: "33.3%", left: 0, right: 0, height: "0.5px", background: "rgba(201,149,108,0.12)" }} />
-        <div style={{ position: "absolute", top: "66.6%", left: 0, right: 0, height: "0.5px", background: "rgba(201,149,108,0.12)" }} />
-        <div style={{ position: "absolute", left: "33.3%", top: 0, bottom: 0, width: "0.5px", background: "rgba(201,149,108,0.12)" }} />
-        <div style={{ position: "absolute", left: "66.6%", top: 0, bottom: 0, width: "0.5px", background: "rgba(201,149,108,0.12)" }} />
-      </div>
+    
 
       {/* Destellos decorativos */}
       <Sparkle style={{ top: "22%", left: "72%", transform: "scale(0.7)" }} />
