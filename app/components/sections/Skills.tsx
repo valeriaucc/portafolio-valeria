@@ -14,7 +14,7 @@ const skills = [
   { name: "TypeScript", level: 50 },
   { name: "IoT / ESP32", level: 62 },
   { name: "Draw.io / UML", level: 68 },
-  { name: "Tailwind CSS", level: 65 },
+  
 ];
 
 export default function Skills() {
