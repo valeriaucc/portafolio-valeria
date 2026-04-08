@@ -70,7 +70,7 @@ export default function About() {
           </div>
 
           {/* Strengths */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="flex flex-col gap-4">
             {strengths.map((item, i) => (
               <div
                 key={i}
