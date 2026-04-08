@@ -5,18 +5,18 @@ import { useReveal } from "../ui/useReveal";
 const testimonials = [
   {
     text: "Valeria demuestra una gran capacidad para combinar funcionalidad y diseño en sus proyectos. Su dedicación y enfoque visual hacen que sus entregas siempre sean destacadas.",
-    author: "Docente de Ingeniería",
-    role: "Universidad Cooperativa de Colombia",
+    author: "Dagoberto Valencia",
+    role: "Docente de Idiomas",
   },
   {
     text: "Trabajar con Valeria es muy fluido. Aporta ideas creativas y siempre busca que el resultado final sea visualmente coherente y fácil de usar.",
-    author: "Compañero de proyecto",
-    role: "Ingeniería de Software",
+    author: "Santiago Torres",
+    role: "Ingeniero de Software",
   },
   {
     text: "Su capacidad para aprender rápido y adaptarse a nuevas tecnologías es admirable. Valeria tiene mucho potencial como desarrolladora frontend.",
-    author: "Colaboradora académica",
-    role: "Universidad Cooperativa de Colombia",
+    author: "Cristhian Burgos",
+    role: "Comunicador y Periodista",
   },
 ];
 
