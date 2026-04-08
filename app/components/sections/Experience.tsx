@@ -11,8 +11,8 @@ const experiences = [
       </svg>
     ),
     title: "Ingeniería de Software",
-    org: "Universidad Cooperativa de Colombia",
-    year: "2024 – Actualidad",
+    org: "Universidad Cooperativa de Colombia - Campus Pasto",
+    year: "2023 – Actualidad",
     desc: "Desarrollo de aplicaciones web, sistemas IoT con ESP32, análisis de datos con R y modelado de sistemas mediante diagramas UML.",
   },
   {
@@ -36,8 +36,8 @@ const experiences = [
       </svg>
     ),
     title: "Proyectos Académicos Destacados",
-    org: "Universidad Cooperativa de Colombia",
-    year: "2024 – Actualidad",
+    org: "Universidad Cooperativa de Colombia - Campus Pasto",
+    year: "2023 – Actualidad",
     desc: "Sistema IoT de monitoreo eléctrico con ESP32 y ThingSpeak, análisis estadístico CIIU con R, portafolio web personal y modelado UML de sistema bancario.",
   },
 ];
