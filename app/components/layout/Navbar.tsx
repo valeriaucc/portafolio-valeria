@@ -36,16 +36,19 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-cream/98 shadow-[0_2px_20px_rgba(27,42,65,0.08)]"
-          : "bg-cream/95"
+          ? "bg-navy/80 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.2)]"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        
         {/* Logo */}
         <a
           href="#inicio"
           onClick={(e) => handleNavClick(e, "#inicio")}
-          className="font-playfair text-2xl font-bold text-navy tracking-tight"
+          className={`font-playfair text-2xl font-bold tracking-tight ${
+            scrolled ? "text-white" : "text-navy"
+          }`}
         >
           Valeria<span className="text-accent">.</span>
         </a>
@@ -57,36 +60,59 @@ export default function Navbar() {
               <a
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className="text-sm font-medium text-navy/70 hover:text-navy transition-colors duration-200"
+                className={`text-sm font-medium transition-colors duration-200 ${
+                  scrolled
+                    ? "text-white/80 hover:text-white"
+                    : "text-navy/70 hover:text-navy"
+                }`}
               >
                 {t(item.label)}
               </a>
             </li>
           ))}
+
+          {/* Botón */}
           <li>
             <a
               href="#contacto"
               onClick={(e) => handleNavClick(e, "#contacto")}
-              className="px-5 py-2 bg-navy text-cream text-sm font-medium rounded-full hover:bg-navy-mid transition-colors duration-200"
+              className={`px-5 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
+                scrolled
+                  ? "bg-white text-navy hover:bg-white/80"
+                  : "bg-navy text-cream hover:bg-navy-mid"
+              }`}
             >
               {t(translations.nav.contact)}
             </a>
           </li>
-          {/* Language toggle */}
+
+          {/* Idioma */}
           <li className="flex items-center gap-2 text-sm font-medium">
             <button
               onClick={() => setLang("es")}
               className={`transition-colors ${
-                lang === "es" ? "text-navy font-semibold" : "text-navy/40 hover:text-navy/70"
+                lang === "es"
+                  ? scrolled
+                    ? "text-white font-semibold"
+                    : "text-navy font-semibold"
+                  : scrolled
+                  ? "text-white/50 hover:text-white"
+                  : "text-navy/40 hover:text-navy"
               }`}
             >
               ES
             </button>
-            <span className="text-navy/30">|</span>
+            <span className={scrolled ? "text-white/40" : "text-navy/30"}>|</span>
             <button
               onClick={() => setLang("en")}
               className={`transition-colors ${
-                lang === "en" ? "text-navy font-semibold" : "text-navy/40 hover:text-navy/70"
+                lang === "en"
+                  ? scrolled
+                    ? "text-white font-semibold"
+                    : "text-navy font-semibold"
+                  : scrolled
+                  ? "text-white/50 hover:text-white"
+                  : "text-navy/40 hover:text-navy"
               }`}
             >
               EN
@@ -100,21 +126,22 @@ export default function Navbar() {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          <span
-            className={`block w-6 h-0.5 bg-navy transition-transform duration-300 ${
-              menuOpen ? "rotate-45 translate-y-2" : ""
-            }`}
-          />
-          <span
-            className={`block w-6 h-0.5 bg-navy transition-opacity duration-300 ${
-              menuOpen ? "opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`block w-6 h-0.5 bg-navy transition-transform duration-300 ${
-              menuOpen ? "-rotate-45 -translate-y-2" : ""
-            }`}
-          />
+          {[1, 2, 3].map((_, i) => (
+            <span
+              key={i}
+              className={`block w-6 h-0.5 transition-all duration-300 ${
+                scrolled ? "bg-white" : "bg-navy"
+              } ${
+                menuOpen
+                  ? i === 0
+                    ? "rotate-45 translate-y-2"
+                    : i === 1
+                    ? "opacity-0"
+                    : "-rotate-45 -translate-y-2"
+                  : ""
+              }`}
+            />
+          ))}
         </button>
       </div>
 
@@ -130,35 +157,27 @@ export default function Navbar() {
               <a
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className="text-sm font-medium text-navy/70 hover:text-navy block"
+                className={`text-sm font-medium block ${
+                  scrolled ? "text-white/80" : "text-navy/70"
+                }`}
               >
                 {t(item.label)}
               </a>
             </li>
           ))}
+
           <li>
             <a
               href="#contacto"
               onClick={(e) => handleNavClick(e, "#contacto")}
-              className="inline-block px-5 py-2 bg-navy text-cream text-sm font-medium rounded-full"
+              className={`inline-block px-5 py-2 text-sm font-medium rounded-full ${
+                scrolled
+                  ? "bg-white text-navy"
+                  : "bg-navy text-cream"
+              }`}
             >
               {t(translations.nav.contact)}
             </a>
-          </li>
-          <li className="flex items-center gap-2 text-sm font-medium">
-            <button
-              onClick={() => setLang("es")}
-              className={lang === "es" ? "text-navy font-semibold" : "text-navy/40"}
-            >
-              ES
-            </button>
-            <span className="text-navy/30">|</span>
-            <button
-              onClick={() => setLang("en")}
-              className={lang === "en" ? "text-navy font-semibold" : "text-navy/40"}
-            >
-              EN
-            </button>
           </li>
         </ul>
       </div>
