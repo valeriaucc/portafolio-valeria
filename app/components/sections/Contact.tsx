@@ -29,7 +29,7 @@ export default function Contact() {
                   <circle cx="12" cy="10" r="3" />
                 </svg>
               </div>
-              <span className="text-navy/70">Colombia 🇨🇴</span>
+              <span className="text-navy/70">Colombia - Pasto, Nariño</span>
             </div>
 
             {/* Email */}

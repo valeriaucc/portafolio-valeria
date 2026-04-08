@@ -5,252 +5,191 @@ export const terminalCommands: Record<Lang, Record<string, string>> = {
     help: `<div class="terminal-response">
 Comandos disponibles:
 ━━━━━━━━━━━━━━━━━━━━━
-• <span style="color:#ffcc00">about</span>     - Información sobre mí
-• <span style="color:#ffcc00">skills</span>    - Mis habilidades técnicas
-• <span style="color:#ffcc00">projects</span>  - Ver mis proyectos
-• <span style="color:#ffcc00">contact</span>   - Información de contacto
-• <span style="color:#ffcc00">education</span> - Mi formación académica
-• <span style="color:#ffcc00">fun</span>       - Datos curiosos sobre mí
-• <span style="color:#ffcc00">clear</span>     - Limpiar terminal
-• <span style="color:#ffcc00">matrix</span>    - Efecto sorpresa ✨
+• <span style="color:#ffcc00">about</span>     - Sobre mí
+• <span style="color:#ffcc00">skills</span>    - Habilidades
+• <span style="color:#ffcc00">projects</span>  - Proyectos
+• <span style="color:#ffcc00">contact</span>   - Contacto
+• <span style="color:#ffcc00">education</span> - Formación
+• <span style="color:#ffcc00">fun</span>       - Perfil
+• <span style="color:#ffcc00">clear</span>     - Limpiar
+• <span style="color:#ffcc00">matrix</span>    - Sorpresa ✨
 </div>`,
+
     about: `<div class="terminal-response">
-╔══════════════════════════════════════╗
-║         SOBRE MÍ                      ║
-╚══════════════════════════════════════╝
+╔════════════════════════════════════════════╗
+║               SOBRE MÍ                     ║
+╚════════════════════════════════════════════╝
 
-👩‍💻 Nombre: Valeria Estefania Gongora Torres
-🎂 Edad: 21 años
-📍 Ubicación: Colombia
-🎓 Carrera: Ingeniería de Software (5to Semestre)
-🌐 Idiomas: Español (nativo), Inglés (B1)
+👩‍💻 Valeria Estefanía Góngora Torres  
+🎓 Ingeniería de Software  
+📍 Colombia  
 
-Soy una persona carismática, empática y soñadora,
-apasionada por el desarrollo web y el diseño de
-interfaces modernas.
+"Sueña. Crea. Brilla."
+
+Soy desarrolladora web en formación apasionada por crear experiencias digitales modernas, elegantes y funcionales.
+
+💡 Me enfoco en:
+• Interfaces limpias y atractivas
+• Experiencia de usuario (UX)
+• Código estructurado y mantenible
+
+🚀 Actualmente:
+• Construyendo proyectos reales
+• Explorando nuevas tecnologías
+• Fortaleciendo mi perfil frontend
+
+✨ Mi objetivo:
+Convertirme en una desarrolladora que combine tecnología + diseño + creatividad.
 </div>`,
+
     skills: `<div class="terminal-response">
-╔══════════════════════════════════════╗
-║         MIS HABILIDADES               ║
-╚══════════════════════════════════════╝
+╔════════════════════════════════════════════╗
+║               HABILIDADES                  ║
+╚════════════════════════════════════════════╝
 
 💻 DESARROLLO:
-   ├── HTML ████████░░ 85%
-   ├── CSS  ████████░░ 80%
-   ├── JavaScript ██████░░░░ 65%
-   └── Figma ███████░░░ 75%
+   ├── HTML █████████░ 90%
+   ├── CSS ████████░░ 85%
+   ├── JavaScript ███████░░░ 75%
+   ├── R █████░░░░░░ 60%
+   └── C (Arduino) █████░░░░░░ 60%
 
-🎨 DISEÑO:
-   ├── UI/UX Design ███████░░░ 70%
-   └── Creatividad █████████░ 90%
+⚙️ HERRAMIENTAS:
+   • Git & GitHub
+   • Figma (UI/UX)
+   • Draw.io
+   • VS Code
 
-🔧 SOFT SKILLS:
-   • Adaptabilidad
-   • Trabajo en equipo
-   • Comunicación efectiva
+🌐 FRONTEND:
+   • Diseño responsive
+   • Componentes reutilizables
+   • Buenas prácticas UI
+
+🔧 OTROS:
+   • IoT con ESP32
+   • Análisis de datos
+   • Integración hardware-software
+
+🔥 SUPERPODER:
+Convertir ideas en interfaces visuales atractivas
 </div>`,
+
     projects: `<div class="terminal-response">
-╔══════════════════════════════════════╗
-║         MIS PROYECTOS                 ║
-╚══════════════════════════════════════╝
+╔════════════════════════════════════════════╗
+║               PROYECTOS                    ║
+╚════════════════════════════════════════════╝
 
-📁 Proyecto 1: Portafolio Web
-   └── HTML, CSS, Figma
-   └── Diseño UI/UX moderno
+📡 Sistema IoT con ESP32
+   └── Monitoreo en tiempo real
+   └── Datos enviados a la nube (ThingSpeak)
+   └── Integración sensores + LCD
 
-📁 Proyecto 2: App de Tareas
-   └── JavaScript
-   └── Gestión de tareas interactiva
+📊 Análisis de datos con R
+   └── Estadística descriptiva
+   └── Modelos de regresión
+   └── Visualización de datos
 
-📁 Proyecto 3: Sistema de Login
-   └── HTML, CSS
-   └── Interfaz de autenticación
+🌐 Portafolio Web
+   └── Diseño UI moderno
+   └── Experiencia interactiva
+   └── Identidad visual personal
 
-🔗 Ver más en la sección de proyectos ↑
+📐 Modelado UML
+   └── Diseño de sistemas
+   └── Diagramas estructurales
+
+✨ Próximamente:
+   └── Aplicaciones más dinámicas
+   └── Proyectos fullstack
 </div>`,
+
     contact: `<div class="terminal-response">
-╔══════════════════════════════════════╗
-║         CONTACTO                      ║
-╚══════════════════════════════════════╝
+╔════════════════════════════════════════════╗
+║               CONTACTO                     ║
+╚════════════════════════════════════════════╝
 
-📧 Email: valeria.gongora@email.com
-📍 Ubicación: Colombia
-💼 Estado: Disponible para prácticas
+📧 Correo:
+valeriagongora3026@gmail.com
 
-🔗 REDES SOCIALES:
-   ├── GitHub: github.com/valeria
-   └── LinkedIn: linkedin.com/in/valeria
+💻 GitHub:
+<a href="https://github.com/valeriaucc" target="_blank">github.com/valeriaucc</a>
 
-¡Me encantaría escucharte! 💬
+💼 LinkedIn:
+<a href="https://www.linkedin.com/in/valeria-torres-593812332" target="_blank">valeria-torres-593812332</a>
+
+📍 Colombia  
+💼 Disponible para prácticas y oportunidades
+
+💬 Respuesta rápida y disposición total para colaborar
+
+✨ Construyamos algo increíble juntos
 </div>`,
+
     education: `<div class="terminal-response">
-╔══════════════════════════════════════╗
-║         FORMACIÓN ACADÉMICA           ║
-╚══════════════════════════════════════╝
+╔════════════════════════════════════════════╗
+║               FORMACIÓN                    ║
+╚════════════════════════════════════════════╝
 
-🎓 INGENIERÍA DE SOFTWARE
-   └── 5to Semestre (en curso)
-   └── Universidad en Colombia
+🎓 Ingeniería de Software
+   └── Universidad Cooperativa de Colombia
+   └── 2024 – Actualidad
 
-📜 CERTIFICACIONES:
-   └── Inglés B1
+📜 Certificación Inglés B1
+   └── Evolve Your English
 
-📚 ÁREAS DE ESTUDIO:
-   • Programación
+📚 ENFOQUE:
+   • Desarrollo web moderno
    • Diseño de interfaces
-   • Desarrollo web
-   • Lógica computacional
-</div>`,
-    fun: `<div class="terminal-response">
-╔══════════════════════════════════════╗
-║         DATOS CURIOSOS                ║
-╚══════════════════════════════════════╝
+   • Lógica de programación
+   • Arquitectura de software
 
-🤸 Practiqué gimnasia artística de pequeña
-🌎 He viajado por Ecuador y Colombia
-📸 Me gusta el modelaje y crear contenido
-☕ Amante del café colombiano
-🎨 Obsesionada con la estética visual
-🚀 Soñadora y siempre aprendiendo
-🎵 La música es mi compañera de código
+🚀 Formación orientada a proyectos reales
 </div>`,
+
+    fun: `<div class="terminal-response">
+╔════════════════════════════════════════════╗
+║               PERFIL                      ║
+╚════════════════════════════════════════════╝
+
+🤸 Ex gimnasta artística
+📸 Me gusta el modelaje y la creación de contenido
+💄 Influencia del maquillaje en mi creatividad
+☕ Fan del café colombiano
+🎧 Música siempre presente al programar
+
+✨ Estilo:
+Elegante, creativo y visual
+
+🚀 Mentalidad:
+Siempre aprendiendo, siempre mejorando
+
+💡 Dato curioso:
+Me gusta que el código también se vea bonito 😌
+</div>`,
+
     matrix: `<div class="terminal-response" style="color:#00ff00">
 ⣀⣤⣤⣤⣤⣤⣤⣀
 ⣠⣶⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄
-⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷
-⣿⣿⣿ VALERIA.DEV ⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟
+⣾⣿⣿⣿ VALERIA.DEV ⣿⣿⣿⣷
+⣿⣿ SISTEMA INTERACTIVO ACTIVO ⣿⣿
+⠻⣿⣿⣿⣿⣿⣿⣿⣿⠟
 
-✨ ¡Bienvenida a la matrix de Valeria! ✨
-"El código es poesía"
+✨ Bienvenida a mi universo digital ✨
+"El código también puede ser arte"
 </div>`,
+
     clear: "CLEAR_TERMINAL",
   },
+
   en: {
-    help: `<div class="terminal-response">
-Available commands:
-━━━━━━━━━━━━━━━━━━━━━
-• <span style="color:#ffcc00">about</span>     - Information about me
-• <span style="color:#ffcc00">skills</span>    - My technical skills
-• <span style="color:#ffcc00">projects</span>  - View my projects
-• <span style="color:#ffcc00">contact</span>   - Contact information
-• <span style="color:#ffcc00">education</span> - My academic background
-• <span style="color:#ffcc00">fun</span>       - Fun facts about me
-• <span style="color:#ffcc00">clear</span>     - Clear terminal
-• <span style="color:#ffcc00">matrix</span>    - Surprise effect ✨
-</div>`,
-    about: `<div class="terminal-response">
-╔══════════════════════════════════════╗
-║         ABOUT ME                      ║
-╚══════════════════════════════════════╝
-
-👩‍💻 Name: Valeria Estefania Gongora Torres
-🎂 Age: 21 years old
-📍 Location: Colombia
-🎓 Major: Software Engineering (5th Semester)
-🌐 Languages: Spanish (native), English (B1)
-
-I'm a charismatic, empathetic, and dreamy person,
-passionate about web development and modern
-interface design.
-</div>`,
-    skills: `<div class="terminal-response">
-╔══════════════════════════════════════╗
-║         MY SKILLS                     ║
-╚══════════════════════════════════════╝
-
-💻 DEVELOPMENT:
-   ├── HTML ████████░░ 85%
-   ├── CSS  ████████░░ 80%
-   ├── JavaScript ██████░░░░ 65%
-   └── Figma ███████░░░ 75%
-
-🎨 DESIGN:
-   ├── UI/UX Design ███████░░░ 70%
-   └── Creativity █████████░ 90%
-
-🔧 SOFT SKILLS:
-   • Adaptability
-   • Team work
-   • Effective communication
-</div>`,
-    projects: `<div class="terminal-response">
-╔══════════════════════════════════════╗
-║         MY PROJECTS                   ║
-╚══════════════════════════════════════╝
-
-📁 Project 1: Web Portfolio
-   └── HTML, CSS, Figma
-   └── Modern UI/UX design
-
-📁 Project 2: Task App
-   └── JavaScript
-   └── Interactive task management
-
-📁 Project 3: Login System
-   └── HTML, CSS
-   └── Authentication interface
-
-🔗 See more in the projects section ↑
-</div>`,
-    contact: `<div class="terminal-response">
-╔══════════════════════════════════════╗
-║         CONTACT                       ║
-╚══════════════════════════════════════╝
-
-📧 Email: valeria.gongora@email.com
-📍 Location: Colombia
-💼 Status: Available for internships
-
-🔗 SOCIAL MEDIA:
-   ├── GitHub: github.com/valeria
-   └── LinkedIn: linkedin.com/in/valeria
-
-I'd love to hear from you! 💬
-</div>`,
-    education: `<div class="terminal-response">
-╔══════════════════════════════════════╗
-║         EDUCATION                     ║
-╚══════════════════════════════════════╝
-
-🎓 SOFTWARE ENGINEERING
-   └── 5th Semester (in progress)
-   └── University in Colombia
-
-📜 CERTIFICATIONS:
-   └── English B1
-
-📚 AREAS OF STUDY:
-   • Programming
-   • Interface design
-   • Web development
-   • Computational logic
-</div>`,
-    fun: `<div class="terminal-response">
-╔══════════════════════════════════════╗
-║         FUN FACTS                     ║
-╚══════════════════════════════════════╝
-
-🤸 I practiced artistic gymnastics as a kid
-🌎 I've traveled through Ecuador and Colombia
-📸 I enjoy modeling and content creation
-☕ Colombian coffee lover
-🎨 Obsessed with visual aesthetics
-🚀 Dreamer and always learning
-🎵 Music is my coding companion
-</div>`,
-    matrix: `<div class="terminal-response" style="color:#00ff00">
-⣀⣤⣤⣤⣤⣤⣤⣀
-⣠⣶⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄
-⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷
-⣿⣿⣿ VALERIA.DEV ⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟
-
-✨ Welcome to Valeria's matrix! ✨
-"Code is poetry"
-</div>`,
+    help: "Use commands like about, skills, projects, contact",
+    about: "Software Engineering student focused on web development",
+    skills: "JavaScript, HTML, CSS, R, IoT",
+    projects: "Portfolio, IoT system, Data analysis",
+    contact: "Email: valeriagongora3026@gmail.com",
+    education: "Software Engineering student",
+    fun: "Creative, dreamer, visual mindset",
+    matrix: "Welcome to Valeria.dev",
     clear: "CLEAR_TERMINAL",
   },
 };
