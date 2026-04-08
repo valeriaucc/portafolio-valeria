@@ -120,7 +120,11 @@ export default function Navbar() {
           </li>
         </ul>
 
-        "
+        {/* Mobile hamburger */}
+        <button
+          className="md:hidden flex flex-col gap-1.5 p-1"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
         >
           {[1, 2, 3].map((_, i) => (
             <span
