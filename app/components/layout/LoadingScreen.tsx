@@ -46,103 +46,120 @@ export default function LoadingScreen() {
 
   if (!visible) return null;
 
+  const statusText =
+    progress < 50
+      ? "Inicializando..."
+      : progress < 90
+      ? "Cargando recursos..."
+      : progress < 100
+      ? "Finalizando..."
+      : "Listo";
+
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center transition-opacity duration-600 ${
-        fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"
-      }`}
+      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center`}
       style={{
-        backgroundColor: "#1B2A41",
+        backgroundColor: "#FDF8F4",
+        opacity: fadeOut ? 0 : 1,
+        pointerEvents: fadeOut ? "none" : "auto",
         transition: "opacity 0.6s ease",
       }}
     >
-      {/* Grid overlay sutil */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(232,197,176,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(232,197,176,0.04) 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
-        }}
-      />
+      {/* Líneas de guía sutiles */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div style={{ position: "absolute", top: "33.3%", left: 0, right: 0, height: "0.5px", background: "rgba(201,149,108,0.12)" }} />
+        <div style={{ position: "absolute", top: "66.6%", left: 0, right: 0, height: "0.5px", background: "rgba(201,149,108,0.12)" }} />
+        <div style={{ position: "absolute", left: "33.3%", top: 0, bottom: 0, width: "0.5px", background: "rgba(201,149,108,0.12)" }} />
+        <div style={{ position: "absolute", left: "66.6%", top: 0, bottom: 0, width: "0.5px", background: "rgba(201,149,108,0.12)" }} />
+      </div>
+
+      {/* Destellos decorativos */}
+      <Sparkle style={{ top: "22%", left: "72%", transform: "scale(0.7)" }} />
+      <Sparkle style={{ top: "68%", left: "25%", transform: "scale(0.5)" }} />
+      <Sparkle style={{ top: "38%", right: "18%" }} />
+
+      {/* Esquinas decorativas */}
+      <Corner position="tl" />
+      <Corner position="tr" />
+      <Corner position="bl" />
+      <Corner position="br" />
 
       {/* Contenido central */}
-      <div className="relative z-10 flex flex-col items-center gap-8 px-6 w-full max-w-sm">
+      <div className="relative z-10 flex flex-col items-center text-align-center gap-0">
 
-        {/* Título */}
-        <div className="text-center">
-          <p
-            style={{
-              fontFamily: "'Inter', sans-serif",
-              color: "#C9956C",
-              fontSize: "0.7rem",
-              letterSpacing: "0.3em",
-              textTransform: "uppercase",
-              marginBottom: "0.75rem",
-            }}
-          >
-            — Portafolio —
-          </p>
-          <h1
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              color: "#FDF8F4",
-              fontSize: "clamp(2rem, 8vw, 3rem)",
-              fontWeight: 700,
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
-              textShadow: "0 0 30px rgba(201,149,108,0.4), 0 0 60px rgba(201,149,108,0.15)",
-            }}
-          >
-            Bienvenido
-          </h1>
-          <p
-            style={{
-              fontFamily: "'Inter', sans-serif",
-              color: "#E8C5B0",
-              fontSize: "0.8rem",
-              letterSpacing: "0.2em",
-              marginTop: "0.5rem",
-              opacity: 0.8,
-            }}
-          >
-            Valeria Góngora
-          </p>
-        </div>
+        {/* Label superior */}
+        <p
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: "11px",
+            letterSpacing: "0.25em",
+            textTransform: "uppercase",
+            color: "#C9956C",
+            marginBottom: "14px",
+          }}
+        >
+          Portafolio
+        </p>
 
-        {/* Barra de carga */}
-        <div className="w-full">
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              marginBottom: "0.5rem",
-            }}
-          >
+        {/* Nombre */}
+        <h1
+          style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: "clamp(2.2rem, 8vw, 3.2rem)",
+            fontWeight: 700,
+            color: "#1B2A41",
+            letterSpacing: "0.02em",
+            lineHeight: 1,
+            margin: 0,
+          }}
+        >
+          Bienvenido
+        </h1>
+
+        <p
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: "12px",
+            letterSpacing: "0.18em",
+            color: "#A07850",
+            marginTop: "10px",
+            fontWeight: 400,
+          }}
+        >Sueña. Crea. Brilla.
+        </p>
+
+        {/* Divisor */}
+        <div
+          style={{
+            width: "40px",
+            height: "0.5px",
+            background: "#C9956C",
+            opacity: 0.5,
+            margin: "28px auto",
+          }}
+        />
+
+        {/* Barra de progreso */}
+        <div style={{ width: "260px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px" }}>
             <span
               style={{
                 fontFamily: "'Inter', sans-serif",
-                color: "#E8C5B0",
-                fontSize: "0.65rem",
-                letterSpacing: "0.2em",
+                fontSize: "10px",
+                letterSpacing: "0.15em",
                 textTransform: "uppercase",
-                opacity: 0.6,
+                color: "#C9956C",
+                opacity: 0.7,
               }}
             >
-              {progress < 50
-                ? "Inicializando..."
-                : progress < 90
-                ? "Cargando recursos..."
-                : progress < 100
-                ? "Finalizando..."
-                : "Listo."}
+              {statusText}
             </span>
             <span
               style={{
                 fontFamily: "'Inter', sans-serif",
-                color: "#C9956C",
-                fontSize: "0.7rem",
-                fontWeight: 600,
+                fontSize: "11px",
+                fontWeight: 500,
+                color: "#1B2A41",
               }}
             >
               {progress}%
@@ -153,38 +170,34 @@ export default function LoadingScreen() {
           <div
             style={{
               width: "100%",
-              height: "6px",
-              backgroundColor: "#3D5A80",
+              height: "1.5px",
+              background: "rgba(201,149,108,0.2)",
               borderRadius: "9999px",
               overflow: "hidden",
-              border: "1px solid rgba(232,197,176,0.15)",
             }}
           >
             <div
               style={{
                 height: "100%",
                 width: `${progress}%`,
+                background: "#C9956C",
                 borderRadius: "9999px",
-                background: "linear-gradient(90deg, #3D5A80 0%, #C9956C 70%, #E8C5B0 100%)",
-                boxShadow: "0 0 10px rgba(201,149,108,0.6)",
-                transition: "width 0.1s linear",
+                transition: "width 0.12s linear",
               }}
             />
           </div>
 
-          {/* Bloques pixel */}
-          <div style={{ display: "flex", gap: "3px", marginTop: "8px" }}>
-            {Array.from({ length: 20 }).map((_, i) => (
+          {/* Puntos */}
+          <div style={{ display: "flex", gap: "6px", marginTop: "14px", justifyContent: "center" }}>
+            {Array.from({ length: 10 }).map((_, i) => (
               <div
                 key={i}
                 style={{
-                  flex: 1,
+                  width: "4px",
                   height: "4px",
-                  borderRadius: "2px",
-                  backgroundColor:
-                    i < Math.floor(progress / 5) ? "#C9956C" : "#3D5A80",
-                  opacity: i < Math.floor(progress / 5) ? 1 : 0.3,
-                  transition: "background-color 0.15s ease",
+                  borderRadius: "50%",
+                  background: i < Math.floor(progress / 10) ? "#C9956C" : "rgba(201,149,108,0.25)",
+                  transition: "background 0.15s",
                 }}
               />
             ))}
@@ -195,29 +208,57 @@ export default function LoadingScreen() {
         <p
           style={{
             fontFamily: "'Inter', sans-serif",
-            color: "#E8C5B0",
-            fontSize: "0.65rem",
+            fontSize: "10px",
             letterSpacing: "0.2em",
-            opacity: 0.5,
-            animation: "blink 1.2s step-end infinite",
+            color: "#A07850",
+            opacity: 0.55,
+            marginTop: "28px",
+            textTransform: "uppercase",
+            animation: "blink 1.4s step-end infinite",
           }}
         >
-          {progress < 100 ? "▮ cargando sistema..." : "▮ sistema listo"}
+          {progress < 100 ? "cargando..." : "Sistema listo"}
         </p>
       </div>
 
-      {/* Esquinas decorativas HUD */}
-      <div style={{ position: "absolute", top: 24, left: 24, width: 32, height: 32, borderTop: "2px solid rgba(201,149,108,0.4)", borderLeft: "2px solid rgba(201,149,108,0.4)" }} />
-      <div style={{ position: "absolute", top: 24, right: 24, width: 32, height: 32, borderTop: "2px solid rgba(201,149,108,0.4)", borderRight: "2px solid rgba(201,149,108,0.4)" }} />
-      <div style={{ position: "absolute", bottom: 24, left: 24, width: 32, height: 32, borderBottom: "2px solid rgba(201,149,108,0.4)", borderLeft: "2px solid rgba(201,149,108,0.4)" }} />
-      <div style={{ position: "absolute", bottom: 24, right: 24, width: 32, height: 32, borderBottom: "2px solid rgba(201,149,108,0.4)", borderRight: "2px solid rgba(201,149,108,0.4)" }} />
-
       <style>{`
         @keyframes blink {
-          0%, 100% { opacity: 0.5; }
+          0%, 100% { opacity: 0.55; }
           50% { opacity: 0; }
         }
       `}</style>
     </div>
   );
+}
+
+function Sparkle({ style }: { style: React.CSSProperties }) {
+  return (
+    <div
+      style={{
+        position: "absolute",
+        width: "6px",
+        height: "6px",
+        background: "#C9956C",
+        opacity: 0.45,
+        clipPath: "polygon(50% 0%, 55% 45%, 100% 50%, 55% 55%, 50% 100%, 45% 55%, 0% 50%, 45% 45%)",
+        ...style,
+      }}
+    />
+  );
+}
+
+function Corner({ position }: { position: "tl" | "tr" | "bl" | "br" }) {
+  const base: React.CSSProperties = {
+    position: "absolute",
+    width: "18px",
+    height: "18px",
+    opacity: 0.3,
+  };
+  const styles: Record<string, React.CSSProperties> = {
+    tl: { top: 24, left: 24, borderTop: "1px solid #C9956C", borderLeft: "1px solid #C9956C" },
+    tr: { top: 24, right: 24, borderTop: "1px solid #C9956C", borderRight: "1px solid #C9956C" },
+    bl: { bottom: 24, left: 24, borderBottom: "1px solid #C9956C", borderLeft: "1px solid #C9956C" },
+    br: { bottom: 24, right: 24, borderBottom: "1px solid #C9956C", borderRight: "1px solid #C9956C" },
+  };
+  return <div style={{ ...base, ...styles[position] }} />;
 }
