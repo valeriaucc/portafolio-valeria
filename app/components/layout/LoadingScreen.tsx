@@ -9,11 +9,11 @@ export default function LoadingScreen() {
 
   useEffect(() => {
     const steps = [
-      { target: 30, delay: 80 },
-      { target: 60, delay: 60 },
-      { target: 85, delay: 50 },
-      { target: 95, delay: 80 },
-      { target: 100, delay: 40 },
+      { target: 50, delay: 25 },
+      { target: 80, delay: 18 },
+      { target: 95, delay: 12 },
+      { target: 100, delay: 8 },
+      
     ];
 
     let current = 0;
@@ -40,7 +40,7 @@ export default function LoadingScreen() {
       }
     }
 
-    timeout = setTimeout(tick, 200);
+    timeout = setTimeout(tick, 50);
     return () => clearTimeout(timeout);
   }, []);
 
