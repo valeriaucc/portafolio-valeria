@@ -93,6 +93,7 @@ export default function Hero() {
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Tz3mmqN7mG0r4yn9GhQ4qafsNmEZPd.png"
                 alt="Valeria Estefanía Góngora Torres"
                 fill
+                sizes="(max-width: 768px) 100vw, 400px"
                 className="object-cover"
                 priority
               />

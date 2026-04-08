@@ -8,7 +8,7 @@ import Projects from "./components/sections/Projects";
 import Experience from "./components/sections/Experience";
 import Testimonials from "./components/sections/Testimonials";
 import Terminal from "./components/sections/Terminal";
-import Contact from "./components/sections/Contact";
+
 
 export default function Home() {
   return (
