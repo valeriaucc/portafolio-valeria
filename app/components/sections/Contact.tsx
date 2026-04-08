@@ -98,7 +98,7 @@ export default function Contact() {
 
               {/* WhatsApp */}
               <a
-                href="https://wa.me/573135281338?text=Hola%20Valeria,%20vi%20tu%20portafolio%20y%20me%20interesa%20contactarte"
+                href="https://wa.me/573135281338?text=¡Hola%20Valeria!%20Vi%20tu%20portafolio%20y%20me%20gustaría%20contactarte."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2.5 bg-green-500 text-white text-sm rounded-full hover:bg-green-600 transition-colors"
