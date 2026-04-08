@@ -35,7 +35,10 @@ const experiences = [
         <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
       </svg>
     ),
-    
+    title: "Proyectos Académicos Destacados",
+    org: "Universidad Cooperativa de Colombia - Campus Pasto",
+    year: "2023 – Actualidad",
+    desc: "Sistema IoT de monitoreo eléctrico con ESP32 y ThingSpeak, análisis estadístico CIIU con R, portafolio web personal y modelado UML de sistema bancario.",
   },
 ];
 
