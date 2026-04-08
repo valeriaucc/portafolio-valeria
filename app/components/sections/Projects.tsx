@@ -10,7 +10,6 @@ const projects = [
     desc: "Sistema de monitoreo que mide voltaje y corriente de un motor DC con sensores, mostrando los datos en pantalla LCD y enviándolos a la nube en tiempo real mediante ThingSpeak.",
     skills: ["Adquisición de datos", "Monitoreo remoto", "Integración hardware-software"],
     tech: ["ESP32", "ThingSpeak", "C / Arduino", "LCD", "FZ0430", "ACS712"],
-    github: "https://github.com/valeriaucc",
     demo: "#",
   },
   {
@@ -20,7 +19,7 @@ const projects = [
     desc: "Proyecto de análisis de datos basado en la Clasificación Industrial Internacional Uniforme (CIIU), aplicando estadística descriptiva, correlaciones y modelos de regresión.",
     skills: ["Estadística descriptiva", "Visualización de datos", "Toma de decisiones"],
     tech: ["R", "Librerías estadísticas"],
-    github: "https://github.com/valeriaucc",
+    
     demo: "#",
   },
   {
@@ -30,7 +29,7 @@ const projects = [
     desc: "Sitio web personal que presenta información profesional, habilidades, proyectos y medios de contacto, con un enfoque moderno, funcional y visualmente atractivo.",
     skills: ["Diseño UI", "Desarrollo frontend", "Marca personal"],
     tech: ["Next.js", "TypeScript", "Tailwind CSS"],
-    github: "https://github.com/valeriaucc",
+    
     demo: "#",
   },
   {
@@ -40,7 +39,7 @@ const projects = [
     desc: "Diseño y modelado de un sistema bancario utilizando diagramas UML y entidad-relación tipo pata de gallo, representando entidades como cliente, cuenta y sus relaciones.",
     skills: ["Análisis de requisitos", "Modelado de datos", "Diseño estructural"],
     tech: ["Draw.io", "UML", "Modelado ER"],
-    github: "https://github.com/valeriaucc",
+    
     demo: "#",
   },
 ];
@@ -111,7 +110,7 @@ export default function Projects() {
               {/* Links */}
               <div className="flex gap-4">
                 <a
-                  href={project.github}
+                  
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 text-sm text-cream/60 hover:text-cream transition-colors"
