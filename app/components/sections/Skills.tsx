@@ -1,9 +1,21 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { translations } from "@/lib/i18n";
 
-const skills = translations.skills;
+const skills = [
+  { name: "HTML", level: 85 },
+  { name: "CSS", level: 80 },
+  { name: "JavaScript", level: 72 },
+  { name: "R", level: 65 },
+  { name: "C / Arduino", level: 60 },
+  { name: "Git & GitHub", level: 70 },
+  { name: "UI / UX", level: 78 },
+  { name: "Next.js", level: 55 },
+  { name: "TypeScript", level: 50 },
+  { name: "IoT / ESP32", level: 62 },
+  { name: "Draw.io / UML", level: 68 },
+  { name: "Tailwind CSS", level: 65 },
+];
 
 export default function Skills() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -23,7 +35,6 @@ export default function Skills() {
               bar.style.width = target;
             }, 200);
           });
-          // reveal cards
           el.querySelectorAll<HTMLElement>(".skill-card").forEach((card, i) => {
             setTimeout(() => {
               card.style.opacity = "1";
@@ -41,6 +52,12 @@ export default function Skills() {
   return (
     <section className="py-20 bg-warm" ref={sectionRef}>
       <div className="max-w-6xl mx-auto px-6">
+        {/* Header */}
+        <div className="mb-12">
+          <span className="text-accent text-sm font-medium">Lo que sé hacer</span>
+          <h2 className="font-playfair text-5xl font-bold text-navy mt-1">Habilidades</h2>
+        </div>
+
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
           {skills.map((skill, i) => (
             <div
@@ -55,7 +72,7 @@ export default function Skills() {
               <h4 className="font-semibold text-navy text-sm mb-3">{skill.name}</h4>
               <div className="h-1.5 bg-blush/30 rounded-full overflow-hidden">
                 <div
-                  className="skill-progress h-full rounded-full"
+                  className="skill-progress h-full rounded-full bg-accent"
                   data-width={`${skill.level}%`}
                   style={{ width: "0%", transition: "width 1.2s cubic-bezier(0.4,0,0.2,1)" }}
                 />

@@ -1,12 +1,8 @@
 "use client";
 
-import { useLang } from "../LangProvider";
-import { translations } from "@/lib/i18n";
 import { useReveal } from "../ui/useReveal";
 
 export default function Contact() {
-  const { t } = useLang();
-  const tr = translations.contact;
   const ref = useReveal();
 
   return (
@@ -15,9 +11,12 @@ export default function Contact() {
         <div ref={ref} className="reveal grid md:grid-cols-2 gap-12 items-center">
           {/* Left – CTA */}
           <div>
-            <span className="text-accent text-sm font-medium block mb-1">{t(tr.tag)}</span>
-            <h2 className="font-playfair text-6xl font-bold text-navy mb-5">{t(tr.title)}</h2>
-            <p className="text-navy/60 leading-relaxed">{t(tr.desc)}</p>
+            <span className="text-accent text-sm font-medium block mb-1">¿Hablamos?</span>
+            <h2 className="font-playfair text-6xl font-bold text-navy mb-5">Contáctame</h2>
+            <p className="text-navy/60 leading-relaxed">
+              Estoy disponible para colaboraciones, proyectos académicos o simplemente para
+              conectar. No dudes en escribirme.
+            </p>
           </div>
 
           {/* Right – Info */}
@@ -30,7 +29,7 @@ export default function Contact() {
                   <circle cx="12" cy="10" r="3" />
                 </svg>
               </div>
-              <span className="text-navy/70">{t(tr.location)}</span>
+              <span className="text-navy/70">Colombia 🇨🇴</span>
             </div>
 
             {/* Email */}
@@ -42,10 +41,10 @@ export default function Contact() {
                 </svg>
               </div>
               <a
-                href="mailto:valeria.gongora@email.com"
+                href="mailto:valeriagongora3026@gmail.com"
                 className="text-navy/70 hover:text-navy transition-colors"
               >
-                valeria.gongora@email.com
+                valeriagongora3026@gmail.com
               </a>
             </div>
 
@@ -57,13 +56,15 @@ export default function Contact() {
                   <polyline points="12 6 12 12 16 14" />
                 </svg>
               </div>
-              <span className="text-navy/70">{t(tr.available)}</span>
+              <span className="text-navy/70">Disponible para proyectos y colaboraciones</span>
             </div>
 
             {/* Socials */}
             <div className="flex gap-3 pt-2">
               <a
-                href="#"
+                href="https://github.com/valeriaucc"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2.5 bg-navy text-cream text-sm rounded-full hover:bg-navy-mid transition-colors"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -72,7 +73,9 @@ export default function Contact() {
                 GitHub
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/valeria-torres-593812332"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2.5 bg-navy text-cream text-sm rounded-full hover:bg-navy-mid transition-colors"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
