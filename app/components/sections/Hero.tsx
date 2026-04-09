@@ -53,7 +53,18 @@ export default function Hero() {
             <span className="block text-2xl font-inter font-normal text-navy/60 mb-1">
               Hola, soy
             </span>
-            <span className="text-accent">Valeria</span>
+            {/* Animación letra a letra */}
+            <span className="text-accent">
+              {"Valeria".split("").map((l, i) => (
+                <span
+                  key={i}
+                  className="inline-block animate-fade-up"
+                  style={{ animationDelay: `${i * 0.06}s`, animationFillMode: "both" }}
+                >
+                  {l}
+                </span>
+              ))}
+            </span>
           </h1>
 
           {/* Description */}
