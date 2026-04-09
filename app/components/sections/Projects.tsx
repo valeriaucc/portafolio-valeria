@@ -44,6 +44,20 @@ const projects = [
   },
 ];
 
+const tilt = (e: React.MouseEvent<HTMLDivElement>) => {
+  const el = e.currentTarget;
+  const { left, top, width, height } = el.getBoundingClientRect();
+  const x = ((e.clientX - left) / width - 0.5) * 14;
+  const y = ((e.clientY - top) / height - 0.5) * 14;
+  el.style.transition = "none";
+  el.style.transform = `perspective(800px) rotateY(${x}deg) rotateX(${-y}deg) scale3d(1.02,1.02,1.02)`;
+};
+
+const resetTilt = (e: React.MouseEvent<HTMLDivElement>) => {
+  e.currentTarget.style.transition = "transform 0.5s ease";
+  e.currentTarget.style.transform = "";
+};
+
 export default function Projects() {
   const ref = useReveal();
 
@@ -61,6 +75,8 @@ export default function Projects() {
           {projects.map((project, i) => (
             <div
               key={i}
+              onMouseMove={tilt}
+              onMouseLeave={resetTilt}
               className="group relative bg-cream/5 border border-cream/10 rounded-2xl p-7 hover:bg-cream/10 hover:border-cream/20 transition-all duration-300 flex flex-col"
             >
               {/* Number */}

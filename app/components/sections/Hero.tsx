@@ -1,12 +1,15 @@
 "use client";
 
 import Image from "next/image";
+import { useRef } from "react";
 import { useLang } from "../LangProvider";
 import { translations } from "@/lib/i18n";
 
 export default function Hero() {
   const { t } = useLang();
   const tr = translations.hero;
+  const imageRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -14,11 +17,29 @@ export default function Hero() {
     if (el) window.scrollTo({ top: (el as HTMLElement).offsetTop - 80, behavior: "smooth" });
   };
 
+  const onMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - left) / width - 0.5;
+    const y = (e.clientY - top) / height - 0.5;
+    imageRef.current!.style.transform = `translate(${x * 18}px, ${y * 12}px)`;
+    contentRef.current!.style.transform = `translate(${x * -6}px, ${y * -4}px)`;
+  };
+
+  const onMouseLeave = () => {
+    imageRef.current!.style.transform = "";
+    contentRef.current!.style.transform = "";
+  };
+
   return (
-    <section className="min-h-screen bg-cream pt-24 pb-16" id="inicio">
+    <section
+      className="min-h-screen bg-cream pt-24 pb-16"
+      id="inicio"
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+    >
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-12">
         {/* Content */}
-        <div className="flex-1 max-w-xl">
+        <div ref={contentRef} className="flex-1 max-w-xl" style={{ transition: "transform 0.15s ease-out" }}>
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-warm border border-blush/40 rounded-full text-sm text-navy/70 mb-6">
             <span className="text-accent">✦</span>
@@ -81,7 +102,7 @@ export default function Hero() {
         </div>
 
         {/* Visual */}
-        <div className="relative flex-shrink-0">
+        <div ref={imageRef} className="relative flex-shrink-0" style={{ transition: "transform 0.15s ease-out" }}>
           <div className="relative w-72 h-72 md:w-80 md:h-80">
             {/* Decorative stars */}
             <span className="absolute -top-4 -left-4 text-accent text-2xl animate-pulse">✦</span>
