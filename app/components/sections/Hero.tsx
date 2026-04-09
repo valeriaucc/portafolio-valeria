@@ -2,12 +2,9 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { useLang } from "../LangProvider";
-import { translations } from "@/lib/i18n";
+import MagneticWrapper from "../ui/MagneticWrapper";
 
 export default function Hero() {
-  const { t } = useLang();
-  const tr = translations.hero;
   const imageRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
