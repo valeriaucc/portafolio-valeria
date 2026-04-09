@@ -135,10 +135,15 @@ export default function Hero() {
                 priority
               />
             </div>
-
-            {/* Frame ring */}
             <div className="absolute inset-0 rounded-full border-2 border-accent/20 pointer-events-none" />
           </div>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-50">
+        <div className="w-5 h-8 rounded-full border border-navy/40 flex items-start justify-center pt-1.5">
+          <div className="w-0.5 h-2 rounded-full bg-navy/60 animate-bounce" />
         </div>
       </div>
     </section>
