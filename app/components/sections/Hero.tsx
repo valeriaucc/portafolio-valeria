@@ -80,48 +80,51 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4">
-            <a
-              href="#proyectos"
-              onClick={(e) => handleScroll(e, "#proyectos")}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-navy text-cream font-medium rounded-full hover:bg-navy-mid transition-colors duration-200"
-            >
-              Ver proyectos
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </a>
-            <a
-              href="#contacto"
-              onClick={(e) => handleScroll(e, "#contacto")}
-              className="inline-flex items-center gap-2 px-6 py-3 border border-navy/20 text-navy font-medium rounded-full hover:border-navy/50 transition-colors duration-200"
-            >
-              Contáctame
-            </a>
-            <a
-              href="/cv-valeria.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-warm border border-blush/50 text-navy font-medium rounded-full hover:bg-blush/20 transition-colors duration-200"
-            >
-
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="7 10 12 15 17 10" />
-                 <line x1="12" y1="15" x2="12" y2="3" />
-              </svg>
-              Descargar CV
-            </a>
+            <MagneticWrapper>
+              <a
+                href="#proyectos"
+                onClick={(e) => handleScroll(e, "#proyectos")}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-navy text-cream font-medium rounded-full hover:bg-navy-mid transition-colors duration-200"
+              >
+                Ver proyectos
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+            </MagneticWrapper>
+            <MagneticWrapper>
+              <a
+                href="#contacto"
+                onClick={(e) => handleScroll(e, "#contacto")}
+                className="inline-flex items-center gap-2 px-6 py-3 border border-navy/20 text-navy font-medium rounded-full hover:border-navy/50 transition-colors duration-200"
+              >
+                Contáctame
+              </a>
+            </MagneticWrapper>
+            <MagneticWrapper>
+              <a
+                href="/cv-valeria.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-warm border border-blush/50 text-navy font-medium rounded-full hover:bg-blush/20 transition-colors duration-200"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Descargar CV
+              </a>
+            </MagneticWrapper>
           </div>
         </div>
 
         {/* Visual */}
         <div ref={imageRef} className="relative flex-shrink-0" style={{ transition: "transform 0.15s ease-out" }}>
           <div className="relative w-72 h-72 md:w-80 md:h-80">
-            {/* Decorative stars */}
             <span className="absolute -top-4 -left-4 text-accent text-2xl animate-pulse">✦</span>
             <span className="absolute -bottom-4 -right-2 text-blush text-lg animate-pulse delay-700">✦</span>
 
-            {/* Image wrapper */}
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-warm shadow-[0_20px_60px_rgba(27,42,65,0.12)]">
               <Image
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Tz3mmqN7mG0r4yn9GhQ4qafsNmEZPd.png"
