@@ -1,6 +1,6 @@
 "use client";
 
-import { useReveal } from "../ui/useReveal";
+import { useStaggerReveal } from "../ui/useReveal";
 
 const experiences = [
   {
