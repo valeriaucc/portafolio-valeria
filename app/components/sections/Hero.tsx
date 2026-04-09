@@ -29,11 +29,16 @@ export default function Hero() {
 
   return (
     <section
-      className="min-h-screen bg-cream pt-24 pb-16"
+      className="relative min-h-screen bg-cream pt-24 pb-16 overflow-hidden"
       id="inicio"
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
     >
+      {/* Orbes ambientales */}
+      <div className="absolute top-24 right-10 w-72 h-72 rounded-full bg-accent/6 blur-3xl animate-pulse pointer-events-none" />
+      <div className="absolute bottom-16 left-0 w-56 h-56 rounded-full bg-blush/15 blur-2xl animate-pulse pointer-events-none" style={{ animationDelay: "1.8s" }} />
+      <div className="absolute top-1/2 left-1/3 w-40 h-40 rounded-full bg-navy-mid/5 blur-3xl animate-pulse pointer-events-none" style={{ animationDelay: "0.9s" }} />
+
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-12">
         {/* Content */}
         <div ref={contentRef} className="flex-1 max-w-xl" style={{ transition: "transform 0.15s ease-out" }}>
