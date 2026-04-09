@@ -38,7 +38,7 @@ export default function Testimonials() {
         </div>
 
         {/* Grid */}
-        <div ref={ref} className="reveal grid md:grid-cols-3 gap-6">
+        <div ref={ref} className="grid md:grid-cols-3 gap-6">
           {testimonials.map((item, i) => (
             <div
               key={i}
