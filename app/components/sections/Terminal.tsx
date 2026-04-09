@@ -86,8 +86,8 @@ export default function Terminal() {
   };
 
   return (
-    <section className="py-24 bg-navy" id="terminal">
-      <div className="max-w-4xl mx-auto px-6">
+    <section className="py-24 bg-navy dark:bg-cream" id="terminal">
+      <div className="always-dark max-w-4xl mx-auto px-6">
         {/* Header */}
         <div className="mb-10 text-center">
           <span className="text-blush/70 text-sm font-medium">{t(tr.tag)}</span>

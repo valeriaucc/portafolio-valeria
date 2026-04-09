@@ -48,8 +48,8 @@ export default function Projects() {
   const ref = useReveal();
 
   return (
-    <section className="py-24 bg-navy" id="proyectos">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="py-24 bg-navy dark:bg-cream" id="proyectos">
+      <div className="always-dark max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="mb-14">
           <span className="text-blush/70 text-sm font-medium">Mi trabajo</span>

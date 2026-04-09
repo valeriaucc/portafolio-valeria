@@ -6,6 +6,7 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       fontFamily: {
@@ -13,12 +14,12 @@ const config: Config = {
         inter: ["Inter", "sans-serif"],
       },
       colors: {
-        cream: "#FDF8F4",
-        navy: "#1B2A41",
-        "navy-mid": "#3D5A80",
-        blush: "#E8C5B0",
-        warm: "#F5EDE4",
-        accent: "#C9956C",
+        cream: "rgb(var(--cream) / <alpha-value>)",
+        navy: "rgb(var(--navy) / <alpha-value>)",
+        "navy-mid": "rgb(var(--navy-mid) / <alpha-value>)",
+        blush: "rgb(var(--blush) / <alpha-value>)",
+        warm: "rgb(var(--warm) / <alpha-value>)",
+        accent: "rgb(var(--accent) / <alpha-value>)",
       },
       animation: {
         "fade-up": "fadeUp 0.6s ease forwards",

@@ -4,13 +4,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===== COLOR VARIABLES (RGB channels for Tailwind opacity support) ===== */
 :root {
-  --cream: #FDF8F4;
-  --navy: #1B2A41;
-  --navy-mid: #3D5A80;
-  --blush: #E8C5B0;
-  --warm: #F5EDE4;
-  --accent: #C9956C;
+  --cream: 253 248 244;
+  --navy: 27 42 65;
+  --navy-mid: 61 90 128;
+  --blush: 232 197 176;
+  --warm: 245 237 228;
+  --accent: 201 149 108;
+}
+
+html.dark {
+  --cream: 18 28 46;
+  --navy: 238 232 222;
+  --navy-mid: 108 150 188;
+  --blush: 52 72 100;
+  --warm: 27 42 65;
+  --accent: 212 160 118;
 }
 
 * {
@@ -18,16 +28,17 @@
 }
 
 body {
-  background-color: var(--cream);
-  color: var(--navy);
+  background-color: rgb(var(--cream));
+  color: rgb(var(--navy));
   font-family: 'Inter', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ===== SKILL BAR ANIMATION ===== */
 .skill-progress {
   height: 100%;
   border-radius: 9999px;
-  background: linear-gradient(90deg, #1B2A41, #3D5A80);
+  background: linear-gradient(90deg, rgb(var(--navy)), rgb(var(--navy-mid)));
   transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -58,19 +69,20 @@ body {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  border: 2px solid rgba(200, 149, 108, 0.3);
+  border: 2px solid rgb(var(--accent) / 0.3);
   pointer-events: none;
 }
 
 /* ===== NAVBAR SCROLL EFFECT ===== */
 .navbar-scrolled {
-  background: rgba(253, 248, 244, 0.98) !important;
-  box-shadow: 0 2px 20px rgba(27, 42, 65, 0.08) !important;
+  background: rgb(var(--navy) / 0.85) !important;
+  box-shadow: 0 2px 20px rgb(var(--navy) / 0.15) !important;
+  backdrop-filter: blur(12px) !important;
 }
 
 /* ===== ACTIVE NAV LINK ===== */
 .nav-link-active {
-  color: var(--navy) !important;
+  color: rgb(var(--navy)) !important;
   font-weight: 600;
 }
 
@@ -79,9 +91,24 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--cream);
+  background: rgb(var(--cream));
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--blush);
+  background: rgb(var(--blush));
   border-radius: 3px;
+}
+
+/* ===== THEME TRANSITION ===== */
+html {
+  transition: color-scheme 0.3s ease;
+}
+
+/* Secciones que siempre son oscuras (bg-navy): en dark mode se reinician
+   las variables para que text-cream/bg-cream sigan siendo legibles */
+html.dark .always-dark {
+  --cream: 253 248 244;
+  --navy: 27 42 65;
+  --blush: 232 197 176;
+  --navy-mid: 61 90 128;
+  --accent: 201 149 108;
 }

@@ -8,8 +8,8 @@ export default function Footer() {
   const tr = translations.footer;
 
   return (
-    <footer className="bg-navy text-cream py-16">
-      <div className="max-w-6xl mx-auto px-6">
+    <footer className="bg-navy dark:bg-cream text-cream py-16">
+      <div className="always-dark max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           {/* Brand */}
           <div>

@@ -59,7 +59,7 @@ export default function LoadingScreen() {
     <div
       className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center`}
       style={{
-        backgroundColor: "#FDF8F4",
+        backgroundColor: "rgb(var(--cream))",
         opacity: fadeOut ? 0 : 1,
         pointerEvents: fadeOut ? "none" : "auto",
         transition: "opacity 0.6s ease",
@@ -88,7 +88,7 @@ export default function LoadingScreen() {
             fontSize: "11px",
             letterSpacing: "0.25em",
             textTransform: "uppercase",
-            color: "#C9956C",
+            color: "rgb(var(--accent))",
             marginBottom: "14px",
           }}
         >
@@ -101,7 +101,7 @@ export default function LoadingScreen() {
             fontFamily: "'Playfair Display', serif",
             fontSize: "clamp(2.2rem, 8vw, 3.2rem)",
             fontWeight: 700,
-            color: "#1B2A41",
+            color: "rgb(var(--navy))",
             letterSpacing: "0.02em",
             lineHeight: 1,
             margin: 0,
@@ -115,7 +115,7 @@ export default function LoadingScreen() {
             fontFamily: "'Inter', sans-serif",
             fontSize: "12px",
             letterSpacing: "0.18em",
-            color: "#A07850",
+            color: "rgb(var(--accent))",
             marginTop: "10px",
             fontWeight: 400,
           }}
@@ -127,7 +127,7 @@ export default function LoadingScreen() {
           style={{
             width: "40px",
             height: "0.5px",
-            background: "#C9956C",
+            background: "rgb(var(--accent))",
             opacity: 0.5,
             margin: "28px auto",
           }}
@@ -142,7 +142,7 @@ export default function LoadingScreen() {
                 fontSize: "10px",
                 letterSpacing: "0.15em",
                 textTransform: "uppercase",
-                color: "#C9956C",
+                color: "rgb(var(--accent))",
                 opacity: 0.7,
               }}
             >
@@ -153,7 +153,7 @@ export default function LoadingScreen() {
                 fontFamily: "'Inter', sans-serif",
                 fontSize: "11px",
                 fontWeight: 500,
-                color: "#1B2A41",
+                color: "rgb(var(--navy))",
               }}
             >
               {progress}%
@@ -165,7 +165,7 @@ export default function LoadingScreen() {
             style={{
               width: "100%",
               height: "1.5px",
-              background: "rgba(201,149,108,0.2)",
+              background: "rgb(var(--accent) / 0.2)",
               borderRadius: "9999px",
               overflow: "hidden",
             }}
@@ -174,7 +174,7 @@ export default function LoadingScreen() {
               style={{
                 height: "100%",
                 width: `${progress}%`,
-                background: "#C9956C",
+                background: "rgb(var(--accent))",
                 borderRadius: "9999px",
                 transition: "width 0.12s linear",
               }}
@@ -190,7 +190,7 @@ export default function LoadingScreen() {
                   width: "4px",
                   height: "4px",
                   borderRadius: "50%",
-                  background: i < Math.floor(progress / 10) ? "#C9956C" : "rgba(201,149,108,0.25)",
+                  background: i < Math.floor(progress / 10) ? "rgb(var(--accent))" : "rgb(var(--accent) / 0.25)",
                   transition: "background 0.15s",
                 }}
               />
@@ -204,7 +204,7 @@ export default function LoadingScreen() {
             fontFamily: "'Inter', sans-serif",
             fontSize: "10px",
             letterSpacing: "0.2em",
-            color: "#A07850",
+            color: "rgb(var(--accent))",
             opacity: 0.55,
             marginTop: "28px",
             textTransform: "uppercase",
@@ -232,7 +232,7 @@ function Sparkle({ style }: { style: React.CSSProperties }) {
         position: "absolute",
         width: "6px",
         height: "6px",
-        background: "#C9956C",
+        background: "rgb(var(--accent))",
         opacity: 0.45,
         clipPath: "polygon(50% 0%, 55% 45%, 100% 50%, 55% 55%, 50% 100%, 45% 55%, 0% 50%, 45% 45%)",
         ...style,
@@ -249,10 +249,10 @@ function Corner({ position }: { position: "tl" | "tr" | "bl" | "br" }) {
     opacity: 0.3,
   };
   const styles: Record<string, React.CSSProperties> = {
-    tl: { top: 24, left: 24, borderTop: "1px solid #C9956C", borderLeft: "1px solid #C9956C" },
-    tr: { top: 24, right: 24, borderTop: "1px solid #C9956C", borderRight: "1px solid #C9956C" },
-    bl: { bottom: 24, left: 24, borderBottom: "1px solid #C9956C", borderLeft: "1px solid #C9956C" },
-    br: { bottom: 24, right: 24, borderBottom: "1px solid #C9956C", borderRight: "1px solid #C9956C" },
+    tl: { top: 24, left: 24, borderTop: "1px solid rgb(var(--accent))", borderLeft: "1px solid rgb(var(--accent))" },
+    tr: { top: 24, right: 24, borderTop: "1px solid rgb(var(--accent))", borderRight: "1px solid rgb(var(--accent))" },
+    bl: { bottom: 24, left: 24, borderBottom: "1px solid rgb(var(--accent))", borderLeft: "1px solid rgb(var(--accent))" },
+    br: { bottom: 24, right: 24, borderBottom: "1px solid rgb(var(--accent))", borderRight: "1px solid rgb(var(--accent))" },
   };
   return <div style={{ ...base, ...styles[position] }} />;
 }
