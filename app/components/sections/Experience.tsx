@@ -43,7 +43,7 @@ const experiences = [
 ];
 
 export default function Experience() {
-  const ref = useReveal();
+  const ref = useStaggerReveal();
 
   return (
     <section className="py-24 bg-cream" id="experiencia">
@@ -56,7 +56,7 @@ export default function Experience() {
           </div>
 
           {/* Items col */}
-          <div ref={ref} className="reveal space-y-6">
+          <div ref={ref} className="space-y-6">
             {experiences.map((item, i) => (
               <div
                 key={i}
