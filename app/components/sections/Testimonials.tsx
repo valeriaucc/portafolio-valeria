@@ -24,7 +24,7 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
-  const ref = useReveal();
+  const ref = useStaggerReveal();
 
   return (
     <section className="py-24 bg-warm" id="testimonios">
