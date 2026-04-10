@@ -98,16 +98,9 @@ export default function Hero() {
           <div className="relative w-72 h-72 md:w-80 md:h-80">
             <span className="absolute -top-4 -left-4 text-accent text-2xl animate-pulse">✦</span>
             <span className="absolute -bottom-4 -right-2 text-blush text-lg animate-pulse delay-700">✦</span>
-
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-warm shadow-[0_20px_60px_rgba(27,42,65,0.12)]">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Tz3mmqN7mG0r4yn9GhQ4qafsNmEZPd.png"
-                alt="Valeria Estefanía Góngora Torres"
-                fill
-                sizes="(max-width: 768px) 100vw, 400px"
-                className="object-cover"
-                priority
-              />
+              <Image src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Tz3mmqN7mG0r4yn9GhQ4qafsNmEZPd.png"
+                alt="Valeria Estefanía Góngora Torres" fill sizes="(max-width: 768px) 100vw, 400px" className="object-cover" priority />
             </div>
             <div className="absolute inset-0 rounded-full border-2 border-accent/20 pointer-events-none" />
           </div>
