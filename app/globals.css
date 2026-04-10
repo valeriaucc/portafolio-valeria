@@ -98,6 +98,15 @@ body {
   border-radius: 3px;
 }
 
+/* ===== SKILL CAROUSEL ===== */
+.skill-card:hover {
+  box-shadow: 0 8px 32px rgb(var(--accent) / 0.18), 0 2px 8px rgb(var(--navy) / 0.08);
+  border-color: rgb(var(--accent) / 0.4) !important;
+  transform: translateY(-3px) !important;
+}
+
+.overflow-x-auto::-webkit-scrollbar { display: none; }
+
 /* ===== CUSTOM CURSOR ===== */
 @media (pointer: fine) {
   * { cursor: none !important; }
