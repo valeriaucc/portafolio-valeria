@@ -8,12 +8,12 @@ export default function Footer() {
   const tr = translations.footer;
 
   return (
-    <footer className="bg-navy dark:bg-cream text-cream py-16">
+    <footer className="bg-navy dark:bg-blush text-cream py-16">
       <div className="always-dark max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           {/* Brand */}
           <div>
-            <h3 className="font-playfair text-xl font-bold mb-3">
+            <h3 className="font-playfair text-xl font-bold mb-3 text-cream">
               Valeria Estefania<br />Gongora Torres
             </h3>
             <p className="text-cream/60 text-sm leading-relaxed">{t(tr.desc)}</p>
