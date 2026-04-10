@@ -46,11 +46,6 @@ export default function Hero() {
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-12">
         {/* Content */}
         <div ref={contentRef} className="flex-1 max-w-xl" style={{ transition: "transform 0.15s ease-out" }}>
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-warm border border-blush/40 rounded-full text-sm text-navy/70 mb-6">
-            <span className="text-accent">✦</span>
-            <span>{t(tr.badge)}</span>
-          </div>
-
           <h1 className="font-playfair text-5xl md:text-6xl font-bold text-navy leading-tight mb-6">
             <span className="block text-2xl font-inter font-normal text-navy/60 mb-1">
               {t(tr.greeting)}
