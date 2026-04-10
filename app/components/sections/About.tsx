@@ -36,13 +36,10 @@ export default function About() {
 
           {/* Strengths */}
           <div className="flex flex-col gap-4">
-            {strengths.map((item, i) => (
-              <div
-                key={i}
-                className="p-5 bg-warm rounded-2xl border border-blush/30 hover:border-blush/60 transition-colors"
-              >
-                <h4 className="font-playfair font-semibold text-navy mb-2">{item.title}</h4>
-                <p className="text-navy/60 text-xs leading-relaxed">{item.desc}</p>
+            {tr.strengths.map((item, i) => (
+              <div key={i} className="p-5 bg-warm rounded-2xl border border-blush/30 hover:border-blush/60 transition-colors">
+                <h4 className="font-playfair font-semibold text-navy mb-2">{t(item.title)}</h4>
+                <p className="text-navy/60 text-xs leading-relaxed">{t(item.desc)}</p>
               </div>
             ))}
           </div>
