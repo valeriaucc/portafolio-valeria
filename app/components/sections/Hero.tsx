@@ -43,9 +43,9 @@ export default function Hero() {
       <div className="absolute bottom-16 left-0 w-56 h-56 rounded-full bg-blush/15 blur-2xl animate-pulse pointer-events-none" style={{ animationDelay: "1.8s" }} />
       <div className="absolute top-1/2 left-1/3 w-40 h-40 rounded-full bg-navy-mid/5 blur-3xl animate-pulse pointer-events-none" style={{ animationDelay: "0.9s" }} />
 
-      <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-12">
+      <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-16 md:gap-20 min-h-[calc(100vh-6rem)]">
         {/* Content */}
-        <div ref={contentRef} className="flex-1 max-w-xl" style={{ transition: "transform 0.15s ease-out" }}>
+        <div ref={contentRef} className="flex-1 max-w-lg" style={{ transition: "transform 0.15s ease-out" }}>
           <h1 className="font-playfair text-5xl md:text-6xl font-bold text-navy leading-tight mb-6">
             <span className="block text-2xl font-inter font-normal text-navy/60 mb-1">
               {t(tr.greeting)}
@@ -90,14 +90,25 @@ export default function Hero() {
 
         {/* Visual */}
         <div ref={imageRef} className="relative flex-shrink-0" style={{ transition: "transform 0.15s ease-out" }}>
+          {/* Aura circular detrás de la foto */}
+          <div className="absolute inset-0 -m-10 rounded-full bg-accent/10 blur-3xl pointer-events-none" />
+          <div className="absolute inset-0 -m-5 rounded-full bg-blush/12 blur-2xl pointer-events-none" />
+
           <div className="relative w-72 h-72 md:w-80 md:h-80">
             <span className="absolute -top-4 -left-4 text-accent text-2xl animate-pulse">✦</span>
             <span className="absolute -bottom-4 -right-2 text-blush text-lg animate-pulse delay-700">✦</span>
-            <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-warm shadow-[0_20px_60px_rgba(27,42,65,0.12)]">
+
+            {/* Anillo exterior decorativo giratorio */}
+            <div className="absolute -inset-3 rounded-full border border-dashed border-accent/25 animate-[spin_18s_linear_infinite] pointer-events-none" />
+
+            {/* Foto */}
+            <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-warm shadow-[0_0_60px_rgba(27,42,65,0.25),0_20px_60px_rgba(27,42,65,0.15)]">
               <Image src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Tz3mmqN7mG0r4yn9GhQ4qafsNmEZPd.png"
                 alt="Valeria Estefanía Góngora Torres" fill sizes="(max-width: 768px) 100vw, 400px" className="object-cover" priority />
             </div>
-            <div className="absolute inset-0 rounded-full border-2 border-accent/20 pointer-events-none" />
+
+            {/* Anillo interior sutil */}
+            <div className="absolute inset-0 rounded-full border-2 border-accent/30 pointer-events-none" />
           </div>
         </div>
       </div>

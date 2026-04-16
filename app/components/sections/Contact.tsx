@@ -14,7 +14,7 @@ export default function Contact() {
       <div className="max-w-6xl mx-auto px-6">
         <div ref={ref} className="reveal grid md:grid-cols-2 gap-12 items-center">
 
-          <div>
+          <div className="text-center md:text-left">
             <span className="text-accent text-sm font-medium block mb-1">{t(tr.tag)}</span>
             <h2 className="font-playfair text-6xl font-bold text-navy mb-5">{t(tr.title)}</h2>
             <p className="text-navy/60 leading-relaxed">{t(tr.desc)}</p>

@@ -12,12 +12,12 @@ export default function About() {
   return (
     <section className="py-24 bg-cream" id="conoceme">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-12">
+        <div className="mb-12 text-center">
           <span className="text-accent text-sm font-medium">{t(tr.tag)}</span>
           <h2 className="font-playfair text-5xl font-bold text-navy mt-1">{t(tr.title)}</h2>
         </div>
 
-        <div ref={ref} className="reveal grid md:grid-cols-2 gap-12 items-start">
+        <div ref={ref} className="reveal grid md:grid-cols-2 gap-12 items-center">
           {/* Text */}
           <div className="space-y-5">
             <p className="text-navy/70 leading-relaxed">{t(tr.p1)}</p>

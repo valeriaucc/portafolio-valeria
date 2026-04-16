@@ -26,7 +26,7 @@ export default function Projects() {
   return (
     <section className="py-24 bg-navy dark:bg-cream" id="proyectos">
       <div className="always-dark max-w-6xl mx-auto px-6">
-        <div className="mb-14">
+        <div className="mb-14 text-center">
           <span className="text-blush/70 text-sm font-medium">{t(tr.tag)}</span>
           <h2 className="font-playfair text-5xl font-bold text-cream mt-1">{t(tr.title)}</h2>
         </div>
