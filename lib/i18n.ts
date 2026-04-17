@@ -180,8 +180,8 @@ export const translations = {
       },
       {
         text:   { es: "Trabajar con Valeria es muy fluido. Aporta ideas creativas y siempre busca que el resultado final sea visualmente coherente y fácil de usar.", en: "Working with Valeria is very smooth. She contributes creative ideas and always ensures the final result is visually coherent and easy to use." },
-        author: "Santiago Torres",
-        role:   { es: "Ingeniero de Software", en: "Software Engineer" },
+        author: "Santiago Burgos",
+        role:   { es: "Estudiante Ingeniería Informática", en: "Computer Science Student" },
         image:  "/testimonials/santiago.jpg",
       },
       {
