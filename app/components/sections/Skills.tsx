@@ -59,18 +59,27 @@ export default function Skills() {
   useEffect(() => {
     const slider = sliderRef.current;
     if (!slider) return;
-    const onDown  = (e: MouseEvent) => { drag.current = { active: true, startX: e.pageX - slider.offsetLeft, scrollLeft: slider.scrollLeft }; slider.style.cursor = "grabbing"; };
-    const onUp    = () => { drag.current.active = false; slider.style.cursor = "grab"; };
-    const onMove  = (e: MouseEvent) => { if (!drag.current.active) return; e.preventDefault(); slider.scrollLeft = drag.current.scrollLeft - (e.pageX - slider.offsetLeft - drag.current.startX) * 1.5; };
-    slider.addEventListener("mousedown", onDown);
-    slider.addEventListener("mouseup",   onUp);
-    slider.addEventListener("mouseleave",onUp);
-    slider.addEventListener("mousemove", onMove);
+    // Cache offsetLeft once on mousedown — avoid repeated forced reflows
+    const onDown = (e: MouseEvent) => {
+      drag.current = { active: true, startX: e.pageX - slider.offsetLeft, scrollLeft: slider.scrollLeft };
+      slider.style.cursor = "grabbing";
+    };
+    const onUp = () => { drag.current.active = false; slider.style.cursor = "grab"; };
+    const onMove = (e: MouseEvent) => {
+      if (!drag.current.active) return;
+      e.preventDefault();
+      // Use cached startX — no offsetLeft read here
+      slider.scrollLeft = drag.current.scrollLeft - (e.pageX - drag.current.startX) * 1.5;
+    };
+    slider.addEventListener("mousedown",  onDown);
+    slider.addEventListener("mouseup",    onUp);
+    slider.addEventListener("mouseleave", onUp);
+    slider.addEventListener("mousemove",  onMove);
     return () => {
-      slider.removeEventListener("mousedown", onDown);
-      slider.removeEventListener("mouseup",   onUp);
-      slider.removeEventListener("mouseleave",onUp);
-      slider.removeEventListener("mousemove", onMove);
+      slider.removeEventListener("mousedown",  onDown);
+      slider.removeEventListener("mouseup",    onUp);
+      slider.removeEventListener("mouseleave", onUp);
+      slider.removeEventListener("mousemove",  onMove);
     };
   }, []);
 

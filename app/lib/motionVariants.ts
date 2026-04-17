@@ -10,13 +10,13 @@ export const fadeUp: Variants = {
 };
 
 export const fadeLeft: Variants = {
-  hidden:  { opacity: 0, x: -72, filter: "blur(4px)" },
-  visible: { opacity: 1, x: 0,   filter: "blur(0px)", transition: { duration: 1.0, ease: EASE } },
+  hidden:  { opacity: 0, x: -56 },
+  visible: { opacity: 1, x: 0,  transition: { duration: 1.0, ease: EASE } },
 };
 
 export const fadeRight: Variants = {
-  hidden:  { opacity: 0, x: 72, filter: "blur(4px)" },
-  visible: { opacity: 1, x: 0,  filter: "blur(0px)", transition: { duration: 1.0, ease: EASE } },
+  hidden:  { opacity: 0, x: 56 },
+  visible: { opacity: 1, x: 0, transition: { duration: 1.0, ease: EASE } },
 };
 
 export const scaleIn: Variants = {

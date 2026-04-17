@@ -54,7 +54,10 @@ export default function Hero() {
   const imageRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
+  const isTouch = typeof window !== "undefined" && window.matchMedia("(hover: none)").matches;
+
   const onMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (isTouch) return;
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
     const x = (e.clientX - left) / width - 0.5;
     const y = (e.clientY - top) / height - 0.5;
@@ -63,6 +66,7 @@ export default function Hero() {
   };
 
   const onMouseLeave = () => {
+    if (isTouch) return;
     if (imageRef.current) imageRef.current.style.transform = "";
     if (contentRef.current) contentRef.current.style.transform = "";
   };
@@ -85,7 +89,7 @@ export default function Hero() {
         <motion.div
           ref={contentRef}
           className="flex-1 w-full max-w-lg mx-auto md:mx-0"
-          style={{ transition: "transform 0.15s ease-out" }}
+          style={{ transition: "transform 0.15s ease-out", willChange: "transform" }}
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -95,13 +99,7 @@ export default function Hero() {
             variants={itemVariants}
             className="font-playfair text-4xl sm:text-5xl md:text-6xl font-bold text-navy leading-tight mb-4 md:mb-5 text-center md:text-left"
           >
-            <span className="text-accent">
-              {"Valeria".split("").map((l, i) => (
-                <span key={i} className="inline-block animate-fade-up" style={{ animationDelay: `${i * 0.06}s`, animationFillMode: "both" }}>
-                  {l}
-                </span>
-              ))}
-            </span>
+            <span className="text-accent">Valeria</span>
           </motion.h1>
 
           {/* Desc 1 — justified */}
@@ -144,7 +142,7 @@ export default function Hero() {
         <motion.div
           ref={imageRef}
           className="relative flex-shrink-0"
-          style={{ transition: "transform 0.15s ease-out" }}
+          style={{ transition: "transform 0.15s ease-out", willChange: "transform, opacity" }}
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] }}

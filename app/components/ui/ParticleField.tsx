@@ -2,19 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 
-/* ─────────────────────────────────────────────────────────────
-   Dual-mode starfield
-
-   DARK  → cream/gold stars  + mix-blend-mode: screen
-          visible on navy sections, invisible on light sections
-
-   LIGHT → navy/accent dots  + mix-blend-mode: multiply
-          visible on cream sections, invisible on navy sections
-
-   Both modes share the same drift + twinkle engine.
-   Same visual language, opposite contrast.
-───────────────────────────────────────────────────────────── */
-
 interface Star {
   x: number; y: number;
   vx: number; vy: number;
@@ -26,8 +13,6 @@ interface Star {
   halo: boolean;
 }
 
-/* Ambos modos usan estrellas cálidas + screen blend:
-   visible en secciones navy, invisible en secciones cream */
 const STAR_COLORS = ["255,252,240", "253,248,244", "255,228,160", "232,197,176"];
 
 export default function ParticleField() {
@@ -44,14 +29,13 @@ export default function ParticleField() {
 
   useEffect(() => {
     if (dark === null) return;
-
     const canvas = ref.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const COLORS    = STAR_COLORS;
-    const COUNT     = dark ? 140 : 120;
+    const isMobile = window.innerWidth < 768;
+    const COUNT     = isMobile ? 60 : (dark ? 120 : 100);
     const MAX_ALPHA = dark ? 0.90 : 0.80;
     const ALPHA_MIN = dark ? 0.25 : 0.20;
     const ALPHA_RNG = dark ? 0.45 : 0.40;
@@ -61,6 +45,7 @@ export default function ParticleField() {
 
     let raf: number;
     let t = 0;
+    let frame = 0;
     let stars: Star[] = [];
 
     const W = () => canvas.width  / devicePixelRatio;
@@ -74,9 +59,9 @@ export default function ParticleField() {
       r:  Math.random() < R_BIG ? 1.5 + Math.random() * 0.9 : 0.45 + Math.random() * 0.9,
       phase: Math.random() * Math.PI * 2,
       speed: 0.5 + Math.random() * 1.3,
-      rgb:   COLORS[Math.floor(Math.random() * COLORS.length)],
+      rgb:   STAR_COLORS[Math.floor(Math.random() * STAR_COLORS.length)],
       baseAlpha: ALPHA_MIN + Math.random() * ALPHA_RNG,
-      halo:  Math.random() < R_BIG,
+      halo:  !isMobile && Math.random() < R_BIG,
     });
 
     const build = () => {
@@ -88,12 +73,19 @@ export default function ParticleField() {
       canvas.style.width  = w + "px";
       canvas.style.height = h + "px";
       ctx.scale(dpr, dpr);
-      const count = Math.min(COUNT, Math.floor((w * h) / 8000));
+      const count = Math.min(COUNT, Math.floor((w * h) / 10000));
       stars = Array.from({ length: count }, () => newStar(w, h));
     };
 
     const tick = () => {
+      // Pause when tab is hidden
+      if (document.hidden) {
+        raf = requestAnimationFrame(tick);
+        return;
+      }
+
       t += 0.008;
+      frame++;
       ctx.clearRect(0, 0, W(), H());
 
       for (const s of stars) {
@@ -110,7 +102,8 @@ export default function ParticleField() {
           s.baseAlpha * (0.45 + 0.55 * Math.abs(Math.sin(t * s.speed + s.phase)))
         );
 
-        if (s.halo) {
+        // Draw halo only every 2 frames to halve gradient cost
+        if (s.halo && frame % 2 === 0) {
           const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * HALO_MULT);
           g.addColorStop(0,   `rgba(${s.rgb},${alpha * HALO_PEAK})`);
           g.addColorStop(0.5, `rgba(${s.rgb},${alpha * 0.12})`);
@@ -130,17 +123,22 @@ export default function ParticleField() {
       raf = requestAnimationFrame(tick);
     };
 
+    let resizeTimer: ReturnType<typeof setTimeout>;
     const onResize = () => {
-      cancelAnimationFrame(raf);
-      build();
-      raf = requestAnimationFrame(tick);
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        cancelAnimationFrame(raf);
+        build();
+        raf = requestAnimationFrame(tick);
+      }, 150);
     };
 
     build();
     raf = requestAnimationFrame(tick);
-    window.addEventListener("resize", onResize);
+    window.addEventListener("resize", onResize, { passive: true });
     return () => {
       cancelAnimationFrame(raf);
+      clearTimeout(resizeTimer);
       window.removeEventListener("resize", onResize);
     };
   }, [dark]);
@@ -151,11 +149,7 @@ export default function ParticleField() {
     <canvas
       ref={ref}
       className="fixed inset-0 pointer-events-none"
-      style={{
-        zIndex: 0,
-        mixBlendMode: "screen",
-        opacity: dark ? 0.80 : 0.72,
-      }}
+      style={{ zIndex: 0, mixBlendMode: "screen", opacity: dark ? 0.80 : 0.72, willChange: "auto" }}
     />
   );
 }
