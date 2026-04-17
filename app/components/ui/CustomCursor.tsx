@@ -26,8 +26,8 @@ export default function CustomCursor() {
     let raf: number;
     const loop = () => {
       const { x, y } = mouse.current;
-      ringPos.current.x += (x - ringPos.current.x) * 0.1;
-      ringPos.current.y += (y - ringPos.current.y) * 0.1;
+      ringPos.current.x += (x - ringPos.current.x) * 0.2;
+      ringPos.current.y += (y - ringPos.current.y) * 0.2;
       ring.current!.style.transform = `translate(${ringPos.current.x}px, ${ringPos.current.y}px)`;
       raf = requestAnimationFrame(loop);
     };

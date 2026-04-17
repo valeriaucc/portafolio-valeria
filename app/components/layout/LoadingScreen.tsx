@@ -7,13 +7,17 @@ export default function LoadingScreen() {
   const [visible, setVisible] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
 
+  const skip = () => {
+    setFadeOut(true);
+    setTimeout(() => setVisible(false), 500);
+  };
+
   useEffect(() => {
     const steps = [
       { target: 50, delay: 25 },
       { target: 80, delay: 18 },
       { target: 95, delay: 12 },
       { target: 100, delay: 8 },
-      
     ];
 
     let current = 0;
@@ -214,6 +218,38 @@ export default function LoadingScreen() {
           {progress < 100 ? "cargando..." : "Sistema listo"}
         </p>
       </div>
+
+      {/* Skip button */}
+      <button
+        onClick={skip}
+        style={{
+          position: "absolute",
+          bottom: "32px",
+          right: "32px",
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
+          fontFamily: "'Inter', sans-serif",
+          fontSize: "11px",
+          letterSpacing: "0.18em",
+          textTransform: "uppercase",
+          color: "rgb(var(--accent))",
+          opacity: 0.55,
+          background: "none",
+          border: "1px solid rgb(var(--accent) / 0.25)",
+          borderRadius: "9999px",
+          padding: "7px 16px",
+          cursor: "pointer",
+          transition: "opacity 0.2s ease, border-color 0.2s ease",
+        }}
+        onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.opacity = "0.9"; (e.currentTarget as HTMLButtonElement).style.borderColor = "rgb(var(--accent) / 0.6)"; }}
+        onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.opacity = "0.55"; (e.currentTarget as HTMLButtonElement).style.borderColor = "rgb(var(--accent) / 0.25)"; }}
+      >
+        Saltar
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
 
       <style>{`
         @keyframes blink {
