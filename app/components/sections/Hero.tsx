@@ -139,12 +139,18 @@ export default function Hero() {
                 {t(tr.cvBtn)}
               </a>
             </MagneticWrapper>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Visual */}
-        <div ref={imageRef} className="relative flex-shrink-0" style={{ transition: "transform 0.15s ease-out" }}>
-          {/* Aura circular detrás de la foto */}
+        <motion.div
+          ref={imageRef}
+          className="relative flex-shrink-0"
+          style={{ transition: "transform 0.15s ease-out" }}
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] }}
+        >
           <div className="absolute inset-0 -m-10 rounded-full bg-accent/10 blur-3xl pointer-events-none" />
           <div className="absolute inset-0 -m-5 rounded-full bg-blush/12 blur-2xl pointer-events-none" />
 
