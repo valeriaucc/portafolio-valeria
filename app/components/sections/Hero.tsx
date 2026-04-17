@@ -158,27 +158,29 @@ export default function Hero() {
             <span className="absolute -top-4 -left-4 text-accent text-2xl animate-pulse">✦</span>
             <span className="absolute -bottom-4 -right-2 text-blush text-lg animate-pulse delay-700">✦</span>
 
-            {/* Anillo exterior decorativo giratorio */}
             <div className="absolute -inset-3 rounded-full border border-dashed border-accent/25 animate-[spin_18s_linear_infinite] pointer-events-none" />
 
-            {/* Foto */}
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-warm shadow-[0_0_60px_rgba(27,42,65,0.25),0_20px_60px_rgba(27,42,65,0.15)]">
               <Image src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Tz3mmqN7mG0r4yn9GhQ4qafsNmEZPd.png"
                 alt="Valeria Estefanía Góngora Torres" fill sizes="(max-width: 768px) 100vw, 400px" className="object-cover" priority />
             </div>
 
-            {/* Anillo interior sutil */}
             <div className="absolute inset-0 rounded-full border-2 border-accent/30 pointer-events-none" />
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-50">
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-50"
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 0.5, y: 0 }}
+        transition={{ delay: 2.5, duration: 0.6 }}
+      >
         <div className="w-5 h-8 rounded-full border border-navy/40 flex items-start justify-center pt-1.5">
           <div className="w-0.5 h-2 rounded-full bg-navy/60 animate-bounce" />
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -53,6 +53,55 @@ export const translations = {
     ],
   },
 
+  certifications: {
+    tag:   { es: "Formación y logros", en: "Training & Achievements" },
+    title: { es: "Certificaciones",    en: "Certifications" },
+    items: [
+      {
+        title:  { es: "Code in Place",   en: "Code in Place" },
+        issuer: "Stanford University",
+        year:   "2026",
+        desc:   { es: "Programa académico internacional de programación con Python, impartido por docentes de Stanford University.", en: "International academic programming program with Python, taught by Stanford University instructors." },
+        link:   "https://codeinplace.stanford.edu/",
+        image:  "/certifications/stanford.png",
+      },
+      {
+        title:  { es: "Certificado",  en: "Certificate" },
+        issuer: "Evolve Your English",
+        year:   "2023 – 2024",
+        desc:   { es: "Nivel intermedio de inglés con enfoque en comprensión y comunicación profesional y académica.", en: "Intermediate English level focused on comprehension and professional/academic communication." },
+        link:   null,
+        image:  "/certifications/evolve.png",
+        certificate: "/certifications/evolve-cert.jpg",
+      },
+      {
+        title:  { es: "Equipo TuringCode", en: "TuringCode Team" },
+        issuer: "TuringCode",
+        year:   "2026 – Actualidad",
+        desc:   { es: "Equipo de desarrollo e investigación. Fortalecimiento de competencias técnicas en entornos reales de trabajo colaborativo.", en: "Development and research team. Strengthening technical skills in real collaborative work environments." },
+        link:   null,
+        image:  "/certifications/turingcode.png",
+      },
+      {
+        title:  { es: "Masterclass IA & Ciberseguridad", en: "Masterclass AI & Cybersecurity" },
+        issuer: "Cisco Networking Academy",
+        year:   "2026",
+        desc:   { es: "Constancia de asistencia a la masterclass presencial \"Inteligencia Artificial y Ciberseguridad\" — AvanzaTec & Cisco.", en: "Certificate of attendance to the in-person masterclass \"Artificial Intelligence and Cybersecurity\" — AvanzaTec & Cisco." },
+        link:   null,
+        image:  "/certifications/cisco.png",
+        certificate: "/certifications/cisco-cert.jpg",
+      },
+      {
+        title:  { es: "CiberGuardianas", en: "CiberGuardianas" },
+        issuer: "Equipo Estudiantil",
+        year:   "2026 – Actualidad",
+        desc:   { es: "Equipo estudiantil de ciberseguridad. Profundización en protección de la información y buenas prácticas digitales.", en: "Student cybersecurity team focused on information protection and digital best practices." },
+        link:   null,
+        image:  "/certifications/ciberguardianas.png",
+      },
+    ],
+  },
+
   skills: {
     tag:   { es: "Lo que sé hacer", en: "What I Do" },
     title: { es: "Habilidades",     en: "Skills" },
