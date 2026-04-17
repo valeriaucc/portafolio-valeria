@@ -39,10 +39,13 @@ export default function Navbar() {
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 50);
+      if (menuOpen) setMenuOpen(false); // close menu on scroll
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [menuOpen]);
 
   /* Close menu on outside click */
   useEffect(() => {
@@ -55,12 +58,6 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handler);
   }, [menuOpen]);
 
-  /* Lock body scroll when menu open */
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [menuOpen]);
-
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setMenuOpen(false);
@@ -68,18 +65,25 @@ export default function Navbar() {
     if (el) window.scrollTo({ top: (el as HTMLElement).offsetTop - 72, behavior: "smooth" });
   };
 
-  /* Scrolled text colors */
+  /*
+   * Sin scroll  → navbar transparente
+   *   light: fondo claro   → texto navy oscuro
+   *   dark:  fondo oscuro  → texto white (no usa variable CSS → nunca desaparece)
+   * Con scroll  → navbar con fondo sólido
+   *   light: bg navy oscuro → texto cream claro
+   *   dark:  bg warm oscuro → texto white
+   */
   const linkColor = scrolled
-    ? theme === "dark" ? "text-navy/80 hover:text-navy" : "text-cream/80 hover:text-cream"
-    : "text-navy/70 hover:text-navy";
+    ? "text-cream/80 hover:text-cream dark:text-white/80 dark:hover:text-white"
+    : "text-navy/80 hover:text-navy dark:text-white/75 dark:hover:text-white";
 
   const logoColor = scrolled
-    ? theme === "dark" ? "text-navy" : "text-cream"
-    : "text-navy";
+    ? "text-cream dark:text-white"
+    : "text-navy dark:text-white";
 
   const iconColor = scrolled
-    ? theme === "dark" ? "text-navy/70 hover:text-navy" : "text-cream/70 hover:text-cream"
-    : "text-navy/60 hover:text-navy";
+    ? "text-cream/80 hover:text-cream dark:text-white/80 dark:hover:text-white"
+    : "text-navy/75 hover:text-navy dark:text-white/80 dark:hover:text-white";
 
   return (
     <nav
@@ -121,8 +125,8 @@ export default function Navbar() {
               onClick={(e) => handleNavClick(e, "#contacto")}
               className={`px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
                 scrolled
-                  ? theme === "dark" ? "bg-navy text-cream hover:bg-navy/80" : "bg-cream text-navy hover:bg-cream/80"
-                  : "bg-navy text-cream hover:bg-navy-mid"
+                  ? "bg-cream text-navy hover:bg-cream/80 dark:bg-navy dark:text-cream dark:hover:bg-navy/80"
+                  : "bg-navy text-cream hover:bg-navy-mid dark:bg-navy dark:text-cream"
               }`}
             >
               {t(translations.nav.contact)}
@@ -185,14 +189,14 @@ export default function Navbar() {
         className={`md:hidden overflow-hidden transition-all duration-350 ease-[cubic-bezier(0.22,1,0.36,1)]
           ${menuOpen ? "max-h-[480px] opacity-100" : "max-h-0 opacity-0"}`}
       >
-        <div className="bg-cream/97 dark:bg-warm/97 backdrop-blur-xl border-t border-navy/8 dark:border-cream/8 shadow-xl">
+        <div className="bg-[rgb(244,238,229)] dark:bg-[rgb(18,26,44)] backdrop-blur-xl border-t border-black/8 dark:border-white/8 shadow-xl">
           <ul className="flex flex-col px-4 py-2">
             {navItems.map((item) => (
               <li key={item.href}>
                 <a
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="flex items-center text-navy/80 dark:text-navy/80 font-medium py-3.5 text-base border-b border-navy/6 dark:border-navy/6 hover:text-accent transition-colors"
+                  className="flex items-center text-navy/85 dark:text-white/80 font-medium py-3.5 text-base border-b border-black/6 dark:border-white/8 hover:text-accent dark:hover:text-accent transition-colors"
                 >
                   {t(item.label)}
                 </a>
@@ -203,7 +207,7 @@ export default function Navbar() {
               <a
                 href="#contacto"
                 onClick={(e) => handleNavClick(e, "#contacto")}
-                className="flex items-center text-navy/80 dark:text-navy/80 font-medium py-3.5 text-base border-b border-navy/6 hover:text-accent transition-colors"
+                className="flex items-center text-navy/85 dark:text-white/80 font-medium py-3.5 text-base border-b border-black/6 dark:border-white/8 hover:text-accent dark:hover:text-accent transition-colors"
               >
                 {t(translations.nav.contact)}
               </a>
@@ -215,10 +219,10 @@ export default function Navbar() {
             <div className="flex items-center gap-3 text-sm font-medium">
               {["es","en"].map((l, i) => (
                 <span key={l} className="flex items-center gap-3">
-                  {i > 0 && <span className="text-navy/20">|</span>}
+                  {i > 0 && <span className="text-black/20 dark:text-white/20">|</span>}
                   <button
                     onClick={() => setLang(l as "es" | "en")}
-                    className={`transition-colors ${lang === l ? "text-accent font-semibold" : "text-navy/50"}`}
+                    className={`transition-colors ${lang === l ? "text-accent font-semibold" : "text-navy/50 dark:text-white/50"}`}
                   >
                     {l.toUpperCase()}
                   </button>
@@ -227,10 +231,13 @@ export default function Navbar() {
             </div>
             <button
               onClick={toggleTheme}
-              className="flex items-center gap-2 text-sm text-navy/60 py-1 px-3 rounded-full border border-navy/15 hover:border-accent/40 transition-colors"
+              className="flex items-center gap-2 text-sm text-navy/70 dark:text-white/70 py-1 px-3 rounded-full border border-black/15 dark:border-white/15 hover:border-accent/50 transition-colors"
             >
               {theme === "light" ? <MoonIcon /> : <SunIcon />}
-              <span>{theme === "light" ? "Oscuro" : "Claro"}</span>
+              <span>{theme === "light"
+                ? (lang === "es" ? "Oscuro" : "Dark")
+                : (lang === "es" ? "Claro"  : "Light")}
+              </span>
             </button>
           </div>
         </div>
