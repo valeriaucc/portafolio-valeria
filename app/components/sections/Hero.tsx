@@ -1,10 +1,52 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { useLang } from "../LangProvider";
 import { translations } from "@/lib/i18n";
 import MagneticWrapper from "../ui/MagneticWrapper";
+
+function TypewriterText({ text, delay = 0 }: { text: string; delay?: number }) {
+  const [displayed, setDisplayed] = useState("");
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const startTimer = setTimeout(() => setStarted(true), delay);
+    return () => clearTimeout(startTimer);
+  }, [delay]);
+
+  useEffect(() => {
+    if (!started) return;
+    let i = 0;
+    setDisplayed("");
+    const interval = setInterval(() => {
+      setDisplayed(text.slice(0, i + 1));
+      i++;
+      if (i >= text.length) clearInterval(interval);
+    }, 22);
+    return () => clearInterval(interval);
+  }, [text, started]);
+
+  return (
+    <span>
+      {displayed}
+      {displayed.length < text.length && started && (
+        <span className="inline-block w-0.5 h-4 bg-accent ml-0.5 animate-blink" />
+      )}
+    </span>
+  );
+}
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] } },
+};
 
 export default function Hero() {
   const { t } = useLang();
