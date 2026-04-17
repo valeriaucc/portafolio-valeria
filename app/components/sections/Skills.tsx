@@ -1,8 +1,12 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import { useLang } from "../LangProvider";
 import { translations } from "@/lib/i18n";
+import { headingTag, headingTitle, staggerContainer } from "@/app/lib/motionVariants";
+
+const VP = { once: false, margin: "-60px" };
 
 const LOGOS: Record<string, string> = {
   "Next.js":       "https://cdn.simpleicons.org/nextdotjs/1b2a41",
@@ -24,23 +28,30 @@ export default function Skills() {
   const tr = translations.skills;
   const sectionRef = useRef<HTMLDivElement>(null);
   const sliderRef  = useRef<HTMLDivElement>(null);
-  const animated   = useRef(false);
   const drag       = useRef({ active: false, startX: 0, scrollLeft: 0 });
 
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
+    const cards = () => el.querySelectorAll<HTMLElement>(".skill-card");
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !animated.current) {
-        animated.current = true;
-        el.querySelectorAll<HTMLElement>(".skill-card").forEach((card, i) => {
+      if (entry.isIntersecting) {
+        cards().forEach((card, i) => {
           setTimeout(() => {
             card.style.opacity = "1";
             card.style.transform = "translateY(0)";
           }, i * 60);
         });
+      } else {
+        cards().forEach((card) => {
+          card.style.transition = "none";
+          card.style.opacity = "0";
+          card.style.transform = "translateY(20px)";
+          void card.offsetHeight;
+          card.style.transition = "opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease, border-color 0.3s ease";
+        });
       }
-    }, { threshold: 0.2 });
+    }, { threshold: 0.15 });
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
@@ -66,10 +77,18 @@ export default function Skills() {
   return (
     <section className="py-14 md:py-20 bg-warm -mt-px" ref={sectionRef} id="habilidades">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="mb-8 md:mb-12 text-center">
-          <span className="text-accent text-sm font-medium">{t(tr.tag)}</span>
-          <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-navy mt-1">{t(tr.title)}</h2>
-        </div>
+        <motion.div
+          className="mb-8 md:mb-12 text-center"
+          variants={staggerContainer(0.12)}
+          initial="hidden" whileInView="visible" viewport={VP}
+        >
+          <motion.span variants={headingTag} className="text-accent text-sm font-medium">
+            {t(tr.tag)}
+          </motion.span>
+          <motion.h2 variants={headingTitle} className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-navy mt-1">
+            {t(tr.title)}
+          </motion.h2>
+        </motion.div>
 
         <div
           ref={sliderRef}

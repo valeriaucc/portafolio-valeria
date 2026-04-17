@@ -1,25 +1,46 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useLang } from "../LangProvider";
 import { translations } from "@/lib/i18n";
-import { useStaggerReveal } from "../ui/useReveal";
+import { fadeUp, headingTag, headingTitle, staggerContainer, fadeLeft } from "@/app/lib/motionVariants";
+
+const VP = { once: false, margin: "-80px" };
 
 export default function Experience() {
   const { t } = useLang();
   const tr = translations.experience;
-  const ref = useStaggerReveal();
 
   return (
     <section className="py-16 md:py-24 bg-cream" id="experiencia">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="mb-10 md:mb-12 text-center">
-          <p className="text-accent text-sm font-medium mb-1">{t(tr.tag)}</p>
-          <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-navy">{t(tr.title)}</h2>
-        </div>
 
-        <div ref={ref} className="max-w-3xl mx-auto space-y-6">
+        {/* Heading */}
+        <motion.div
+          className="mb-10 md:mb-12 text-center"
+          variants={staggerContainer(0.12)}
+          initial="hidden" whileInView="visible" viewport={VP}
+        >
+          <motion.p variants={headingTag} className="text-accent text-sm font-medium mb-1">
+            {t(tr.tag)}
+          </motion.p>
+          <motion.h2 variants={headingTitle} className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-navy">
+            {t(tr.title)}
+          </motion.h2>
+        </motion.div>
+
+        {/* Items */}
+        <motion.div
+          className="max-w-3xl mx-auto space-y-6"
+          variants={staggerContainer(0.18, 0.1)}
+          initial="hidden" whileInView="visible" viewport={VP}
+        >
           {tr.items.map((item, i) => (
-            <div key={i} className="flex gap-5 p-6 bg-warm rounded-2xl border border-blush/20 hover:border-blush/50 transition-colors">
+            <motion.div
+              key={i}
+              variants={fadeLeft}
+              className="flex gap-5 p-6 bg-warm rounded-2xl border border-blush/20 hover:border-blush/50 transition-colors"
+            >
               <div className="flex-shrink-0 w-10 h-10 rounded-full bg-navy/10 flex items-center justify-center text-navy">
                 {i === 0 && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>}
                 {i === 1 && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>}
@@ -35,9 +56,9 @@ export default function Experience() {
                 </div>
                 <p className="text-navy/60 text-sm mt-2">{t(item.desc)}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

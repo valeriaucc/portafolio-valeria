@@ -3,6 +3,9 @@
 import { motion } from "framer-motion";
 import { useLang } from "../LangProvider";
 import { translations } from "@/lib/i18n";
+import { headingTag, headingTitle, staggerContainer } from "@/app/lib/motionVariants";
+
+const VP = { once: false, margin: "-60px" };
 
 const containerVariants = {
   hidden: {},
@@ -11,7 +14,7 @@ const containerVariants = {
 
 const itemVariants = {
   hidden:  { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] } },
 };
 
 export default function Contact() {
@@ -21,18 +24,28 @@ export default function Contact() {
   return (
     <section className="py-16 md:py-24 bg-cream" id="contacto">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
-        <div className="mb-10 md:mb-14 text-center">
-          <span className="text-accent text-sm font-medium">{t(tr.tag)}</span>
-          <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-navy mt-1">{t(tr.title)}</h2>
-          <p className="text-navy/50 text-sm mt-3 max-w-md mx-auto">{t(tr.desc)}</p>
-        </div>
+        <motion.div
+          className="mb-10 md:mb-14 text-center"
+          variants={staggerContainer(0.12)}
+          initial="hidden" whileInView="visible" viewport={VP}
+        >
+          <motion.span variants={headingTag} className="text-accent text-sm font-medium">
+            {t(tr.tag)}
+          </motion.span>
+          <motion.h2 variants={headingTitle} className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-navy mt-1">
+            {t(tr.title)}
+          </motion.h2>
+          <motion.p variants={headingTitle} className="text-navy/50 text-sm mt-3 max-w-md mx-auto">
+            {t(tr.desc)}
+          </motion.p>
+        </motion.div>
 
         <motion.div
           className="space-y-4"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: false, margin: "-60px" }}
         >
           <motion.div variants={itemVariants} className="flex items-center gap-4 p-5 bg-warm rounded-2xl border border-blush/20 hover:border-blush/50 transition-colors">
             <div className="w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center text-navy flex-shrink-0">
@@ -68,7 +81,7 @@ export default function Contact() {
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
               LinkedIn
             </a>
-            <a href="https://wa.me/573135281338" target="_blank" rel="noopener noreferrer"
+            <a href="https://wa.me/573135281338?text=%C2%A1Hola%20Valeria!%20Me%20gustaron%20tus%20habilidades%2C%20me%20gustar%C3%ADa%20contactarte." target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2.5 bg-green-500 text-white text-sm rounded-full hover:bg-green-600 transition-colors">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0 0 12 .5C5.65.5.5 5.65.5 12c0 2.11.55 4.16 1.6 5.97L.5 23.5l5.7-1.5A11.9 11.9 0 0 0 12 23.5c6.35 0 11.5-5.15 11.5-11.5 0-3.07-1.2-5.96-3.48-8.52Z"/></svg>
               WhatsApp

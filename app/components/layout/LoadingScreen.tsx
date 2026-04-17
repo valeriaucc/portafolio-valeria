@@ -23,7 +23,7 @@ const TR = {
   },
 };
 
-export default function LoadingScreen() {
+export default function LoadingScreen({ onDone }: { onDone?: () => void }) {
   const [progress, setProgress] = useState(0);
   const [visible, setVisible] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
@@ -37,7 +37,7 @@ export default function LoadingScreen() {
 
   const skip = () => {
     setFadeOut(true);
-    setTimeout(() => setVisible(false), 500);
+    setTimeout(() => { setVisible(false); onDone?.(); }, 500);
   };
 
   /* Skip on any key press or click anywhere */
@@ -73,7 +73,7 @@ export default function LoadingScreen() {
         } else {
           timeout = setTimeout(() => {
             setFadeOut(true);
-            setTimeout(() => setVisible(false), 600);
+            setTimeout(() => { setVisible(false); onDone?.(); }, 600);
           }, 400);
         }
       }

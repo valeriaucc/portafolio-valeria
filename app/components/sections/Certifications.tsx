@@ -4,6 +4,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "../LangProvider";
 import { translations } from "@/lib/i18n";
+import { headingTag, headingTitle, staggerContainer } from "@/app/lib/motionVariants";
+
+const VP = { once: false, margin: "-60px" };
 
 const containerVariants = {
   hidden: {},
@@ -12,7 +15,7 @@ const containerVariants = {
 
 const cardVariants = {
   hidden: { opacity: 0, y: 32 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] } },
 };
 
 export default function Certifications() {
@@ -23,17 +26,25 @@ export default function Certifications() {
   return (
     <section className="py-16 md:py-24 bg-cream" id="certificaciones">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="mb-10 md:mb-14 text-center">
-          <span className="text-accent text-sm font-medium">{t(tr.tag)}</span>
-          <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-navy mt-1">{t(tr.title)}</h2>
-        </div>
+        <motion.div
+          className="mb-10 md:mb-14 text-center"
+          variants={staggerContainer(0.12)}
+          initial="hidden" whileInView="visible" viewport={VP}
+        >
+          <motion.span variants={headingTag} className="text-accent text-sm font-medium">
+            {t(tr.tag)}
+          </motion.span>
+          <motion.h2 variants={headingTitle} className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-navy mt-1">
+            {t(tr.title)}
+          </motion.h2>
+        </motion.div>
 
         <motion.div
           className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: false, margin: "-60px" }}
         >
           {tr.items.map((item, i) => (
             <motion.div
