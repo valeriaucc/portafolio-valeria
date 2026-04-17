@@ -2,15 +2,50 @@
 
 import { useEffect, useState } from "react";
 
+const TR = {
+  es: {
+    label:   "Portafolio",
+    title:   "Bienvenido",
+    tagline: "Sueña. Crea. Brilla.",
+    status:  ["Inicializando...", "Cargando recursos...", "Finalizando...", "Listo"],
+    loading: "cargando...",
+    ready:   "Sistema listo",
+    hint:    "Presiona Enter para continuar →",
+  },
+  en: {
+    label:   "Portfolio",
+    title:   "Welcome",
+    tagline: "Dream. Create. Shine.",
+    status:  ["Initializing...", "Loading resources...", "Finishing...", "Ready"],
+    loading: "loading...",
+    ready:   "System ready",
+    hint:    "Press Enter to continue →",
+  },
+};
+
 export default function LoadingScreen() {
   const [progress, setProgress] = useState(0);
   const [visible, setVisible] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
 
+  const [lang, setLang] = useState<"es" | "en">("es");
+  useEffect(() => {
+    const saved = localStorage.getItem("portfolio-lang");
+    if (saved === "en") setLang("en");
+  }, []);
+  const tr = TR[lang];
+
   const skip = () => {
     setFadeOut(true);
     setTimeout(() => setVisible(false), 500);
   };
+
+  /* Skip on any key press or click anywhere */
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Enter") skip(); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const steps = [
@@ -51,13 +86,9 @@ export default function LoadingScreen() {
   if (!visible) return null;
 
   const statusText =
-    progress < 50
-      ? "Inicializando..."
-      : progress < 90
-      ? "Cargando recursos..."
-      : progress < 100
-      ? "Finalizando..."
-      : "Listo";
+    progress < 50  ? tr.status[0] :
+    progress < 90  ? tr.status[1] :
+    progress < 100 ? tr.status[2] : tr.status[3];
 
   return (
     <div
@@ -96,7 +127,7 @@ export default function LoadingScreen() {
             marginBottom: "14px",
           }}
         >
-          Portafolio
+          {tr.label}
         </p>
 
         {/* Nombre */}
@@ -111,7 +142,7 @@ export default function LoadingScreen() {
             margin: 0,
           }}
         >
-          Bienvenido
+          {tr.title}
         </h1>
 
         <p
@@ -123,7 +154,7 @@ export default function LoadingScreen() {
             marginTop: "10px",
             fontWeight: 400,
           }}
-        >Sueña. Crea. Brilla.
+        >{tr.tagline}
         </p>
 
         {/* Divisor */}
@@ -215,41 +246,29 @@ export default function LoadingScreen() {
             animation: "blink 1.4s step-end infinite",
           }}
         >
-          {progress < 100 ? "cargando..." : "Sistema listo"}
+          {progress < 100 ? tr.loading : tr.ready}
         </p>
       </div>
 
-      {/* Skip button */}
-      <button
-        onClick={skip}
+      {/* Skip hint */}
+      <p
         style={{
           position: "absolute",
           bottom: "32px",
-          right: "32px",
-          display: "flex",
-          alignItems: "center",
-          gap: "6px",
+          left: "50%",
+          transform: "translateX(-50%)",
           fontFamily: "'Inter', sans-serif",
-          fontSize: "11px",
-          letterSpacing: "0.18em",
+          fontSize: "10px",
+          letterSpacing: "0.2em",
           textTransform: "uppercase",
           color: "rgb(var(--accent))",
-          opacity: 0.55,
-          background: "none",
-          border: "1px solid rgb(var(--accent) / 0.25)",
-          borderRadius: "9999px",
-          padding: "7px 16px",
-          cursor: "pointer",
-          transition: "opacity 0.2s ease, border-color 0.2s ease",
+          opacity: 0.4,
+          whiteSpace: "nowrap",
+          animation: "blink 1.4s step-end infinite",
         }}
-        onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.opacity = "0.9"; (e.currentTarget as HTMLButtonElement).style.borderColor = "rgb(var(--accent) / 0.6)"; }}
-        onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.opacity = "0.55"; (e.currentTarget as HTMLButtonElement).style.borderColor = "rgb(var(--accent) / 0.25)"; }}
       >
-        Saltar
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </button>
+        {tr.hint}
+      </p>
 
       <style>{`
         @keyframes blink {

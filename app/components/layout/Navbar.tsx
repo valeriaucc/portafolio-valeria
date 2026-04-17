@@ -1,46 +1,42 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLang } from "../LangProvider";
 import { useTheme } from "../ThemeProvider";
 import { translations } from "@/lib/i18n";
 
 const navItems = [
-  { href: "#proyectos", label: translations.nav.projects },
-  { href: "#experiencia", label: translations.nav.experience },
-  { href: "#testimonios", label: translations.nav.testimonials },
-  { href: "#conoceme", label: translations.nav.about },
+  { href: "#proyectos",    label: translations.nav.projects    },
+  { href: "#experiencia",  label: translations.nav.experience  },
+  { href: "#testimonios",  label: translations.nav.testimonials },
+  { href: "#conoceme",     label: translations.nav.about       },
 ];
 
-function SunIcon() {
+function SunIcon()  {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="5" />
-      <line x1="12" y1="1" x2="12" y2="3" />
-      <line x1="12" y1="21" x2="12" y2="23" />
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-      <line x1="1" y1="12" x2="3" y2="12" />
-      <line x1="21" y1="12" x2="23" y2="12" />
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+      <circle cx="12" cy="12" r="5"/>
+      <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+      <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
     </svg>
   );
 }
-
 function MoonIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
     </svg>
   );
 }
 
 export default function Navbar() {
   const { lang, setLang, t } = useLang();
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme }  = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -48,83 +44,84 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  /* Close menu on outside click */
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+    if (menuOpen) document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [menuOpen]);
+
+  /* Lock body scroll when menu open */
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setMenuOpen(false);
     const el = document.querySelector(href);
-    if (el) {
-      const offsetTop = (el as HTMLElement).offsetTop - 80;
-      window.scrollTo({ top: offsetTop, behavior: "smooth" });
-    }
+    if (el) window.scrollTo({ top: (el as HTMLElement).offsetTop - 72, behavior: "smooth" });
   };
 
-  /* When scrolled:
-     - Light mode: dark navy bg → white text
-     - Dark mode:  light cream bg → navy text
-     We achieve this by using the semantic CSS vars:
-     scrolled bg = navy/85 (in light = dark, in dark = light cream)
-     scrolled text = cream (in light = warm white, in dark = dark navy → inverted) */
-  const scrolledTextColor = scrolled
-    ? theme === "dark"
-      ? "text-navy"
-      : "text-cream"
-    : "text-navy";
-
-  const scrolledTextMuted = scrolled
-    ? theme === "dark"
-      ? "text-navy/70 hover:text-navy"
-      : "text-cream/80 hover:text-cream"
+  /* Scrolled text colors */
+  const linkColor = scrolled
+    ? theme === "dark" ? "text-navy/80 hover:text-navy" : "text-cream/80 hover:text-cream"
     : "text-navy/70 hover:text-navy";
 
-  const scrolledTextFaint = scrolled
-    ? theme === "dark"
-      ? "text-navy/40"
-      : "text-cream/40"
-    : "text-navy/30";
+  const logoColor = scrolled
+    ? theme === "dark" ? "text-navy" : "text-cream"
+    : "text-navy";
+
+  const iconColor = scrolled
+    ? theme === "dark" ? "text-navy/70 hover:text-navy" : "text-cream/70 hover:text-cream"
+    : "text-navy/60 hover:text-navy";
 
   return (
     <nav
+      ref={menuRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-navy/90 dark:bg-warm/95 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.2)]"
+          ? "bg-navy/90 dark:bg-warm/95 backdrop-blur-md shadow-[0_2px_24px_rgba(0,0,0,0.18)]"
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
 
         {/* Logo */}
         <a
           href="#inicio"
           onClick={(e) => handleNavClick(e, "#inicio")}
-          className={`font-playfair text-2xl font-bold tracking-tight transition-colors ${scrolledTextColor}`}
+          className={`font-playfair text-xl sm:text-2xl font-bold tracking-tight transition-colors ${logoColor}`}
         >
           Valeria<span className="text-accent">.</span>
         </a>
 
         {/* Desktop nav */}
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden md:flex items-center gap-6 lg:gap-8">
           {navItems.map((item) => (
             <li key={item.href}>
               <a
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className={`text-sm font-medium transition-colors duration-200 ${scrolledTextMuted}`}
+                className={`text-sm font-medium transition-colors duration-200 ${linkColor}`}
               >
                 {t(item.label)}
               </a>
             </li>
           ))}
 
-          {/* Botón contacto */}
           <li>
             <a
               href="#contacto"
               onClick={(e) => handleNavClick(e, "#contacto")}
-              className={`px-5 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
+              className={`px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
                 scrolled
-                  ? theme === "dark"
-                    ? "bg-navy text-cream hover:bg-navy/80"
-                    : "bg-cream text-navy hover:bg-cream/80"
+                  ? theme === "dark" ? "bg-navy text-cream hover:bg-navy/80" : "bg-cream text-navy hover:bg-cream/80"
                   : "bg-navy text-cream hover:bg-navy-mid"
               }`}
             >
@@ -132,51 +129,29 @@ export default function Navbar() {
             </a>
           </li>
 
-          {/* Idioma */}
-          <li className="flex items-center gap-2 text-sm font-medium">
-            <button
-              onClick={() => setLang("es")}
-              className={`transition-colors ${
-                lang === "es"
-                  ? `${scrolledTextColor} font-semibold`
-                  : scrolled
-                  ? theme === "dark"
-                    ? "text-navy/50 hover:text-navy"
-                    : "text-cream/50 hover:text-cream"
-                  : "text-navy/40 hover:text-navy"
-              }`}
-            >
-              ES
-            </button>
-            <span className={scrolledTextFaint}>|</span>
-            <button
-              onClick={() => setLang("en")}
-              className={`transition-colors ${
-                lang === "en"
-                  ? `${scrolledTextColor} font-semibold`
-                  : scrolled
-                  ? theme === "dark"
-                    ? "text-navy/50 hover:text-navy"
-                    : "text-cream/50 hover:text-cream"
-                  : "text-navy/40 hover:text-navy"
-              }`}
-            >
-              EN
-            </button>
+          {/* Lang */}
+          <li className="flex items-center gap-1.5 text-sm font-medium">
+            {["es","en"].map((l, i) => (
+              <span key={l} className="flex items-center gap-1.5">
+                {i > 0 && <span className={`${iconColor} opacity-40`}>|</span>}
+                <button
+                  onClick={() => setLang(l as "es" | "en")}
+                  className={`transition-colors ${
+                    lang === l ? `${logoColor} font-semibold` : linkColor
+                  }`}
+                >
+                  {l.toUpperCase()}
+                </button>
+              </span>
+            ))}
           </li>
 
-          {/* Theme toggle */}
+          {/* Theme */}
           <li>
             <button
               onClick={toggleTheme}
-              aria-label={theme === "light" ? "Activar modo oscuro" : "Activar modo claro"}
-              className={`p-2 rounded-full transition-all duration-200 ${
-                scrolled
-                  ? theme === "dark"
-                    ? "text-navy hover:bg-navy/10"
-                    : "text-cream hover:bg-cream/10"
-                  : "text-navy/60 hover:text-navy hover:bg-navy/5"
-              }`}
+              aria-label="Toggle theme"
+              className={`p-2 rounded-full transition-all duration-200 ${iconColor} hover:bg-navy/8`}
             >
               {theme === "light" ? <MoonIcon /> : <SunIcon />}
             </button>
@@ -184,109 +159,90 @@ export default function Navbar() {
         </ul>
 
         {/* Mobile right controls */}
-        <div className="md:hidden flex items-center gap-3">
-          {/* Theme toggle mobile */}
-          <button
-            onClick={toggleTheme}
-            aria-label={theme === "light" ? "Activar modo oscuro" : "Activar modo claro"}
-            className={`p-1.5 rounded-full transition-colors ${
-              scrolled
-                ? theme === "dark"
-                  ? "text-navy"
-                  : "text-cream"
-                : "text-navy/60"
-            }`}
-          >
+        <div className="md:hidden flex items-center gap-2">
+          <button onClick={toggleTheme} aria-label="Toggle theme"
+            className={`p-2 rounded-full transition-colors ${iconColor}`}>
             {theme === "light" ? <MoonIcon /> : <SunIcon />}
           </button>
 
           {/* Hamburger */}
           <button
-            className="flex flex-col gap-1.5 p-1"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
+            className={`p-2 rounded-full transition-colors ${iconColor}`}
           >
-            {[1, 2, 3].map((_, i) => (
-              <span
-                key={i}
-                className={`block w-6 h-0.5 transition-all duration-300 ${
-                  scrolled
-                    ? theme === "dark"
-                      ? "bg-navy"
-                      : "bg-cream"
-                    : "bg-navy"
-                } ${
-                  menuOpen
-                    ? i === 0
-                      ? "rotate-45 translate-y-2"
-                      : i === 1
-                      ? "opacity-0"
-                      : "-rotate-45 -translate-y-2"
-                    : ""
-                }`}
-              />
-            ))}
+            <div className="w-5 h-4 flex flex-col justify-between">
+              <span className={`block h-0.5 rounded-full transition-all duration-300 bg-current ${menuOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
+              <span className={`block h-0.5 rounded-full transition-all duration-300 bg-current ${menuOpen ? "opacity-0 scale-x-0" : ""}`} />
+              <span className={`block h-0.5 rounded-full transition-all duration-300 bg-current ${menuOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
+            </div>
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu panel */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
-          menuOpen ? "max-h-96 pb-4" : "max-h-0"
-        }`}
+        className={`md:hidden overflow-hidden transition-all duration-350 ease-[cubic-bezier(0.22,1,0.36,1)]
+          ${menuOpen ? "max-h-[480px] opacity-100" : "max-h-0 opacity-0"}`}
       >
-        <ul className="flex flex-col px-6 gap-4">
-          {navItems.map((item) => (
-            <li key={item.href}>
+        <div className="bg-cream/97 dark:bg-warm/97 backdrop-blur-xl border-t border-navy/8 dark:border-cream/8 shadow-xl">
+          <ul className="flex flex-col px-4 py-2">
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <a
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className="flex items-center text-navy/80 dark:text-navy/80 font-medium py-3.5 text-base border-b border-navy/6 dark:border-navy/6 hover:text-accent transition-colors"
+                >
+                  {t(item.label)}
+                </a>
+              </li>
+            ))}
+
+            <li>
               <a
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className={`text-sm font-medium block ${scrolledTextMuted}`}
+                href="#contacto"
+                onClick={(e) => handleNavClick(e, "#contacto")}
+                className="flex items-center text-navy/80 dark:text-navy/80 font-medium py-3.5 text-base border-b border-navy/6 hover:text-accent transition-colors"
               >
-                {t(item.label)}
+                {t(translations.nav.contact)}
               </a>
             </li>
-          ))}
+          </ul>
 
-          <li>
-            <a
-              href="#contacto"
-              onClick={(e) => handleNavClick(e, "#contacto")}
-              className={`inline-block px-5 py-2 text-sm font-medium rounded-full ${
-                scrolled
-                  ? theme === "dark"
-                    ? "bg-navy text-cream"
-                    : "bg-cream text-navy"
-                  : "bg-navy text-cream"
-              }`}
-            >
-              {t(translations.nav.contact)}
-            </a>
-          </li>
-
-          {/* Lang mobile */}
-          <li className="flex items-center gap-2 text-sm font-medium">
+          {/* Bottom bar: lang + theme */}
+          <div className="flex items-center justify-between px-4 py-4">
+            <div className="flex items-center gap-3 text-sm font-medium">
+              {["es","en"].map((l, i) => (
+                <span key={l} className="flex items-center gap-3">
+                  {i > 0 && <span className="text-navy/20">|</span>}
+                  <button
+                    onClick={() => setLang(l as "es" | "en")}
+                    className={`transition-colors ${lang === l ? "text-accent font-semibold" : "text-navy/50"}`}
+                  >
+                    {l.toUpperCase()}
+                  </button>
+                </span>
+              ))}
+            </div>
             <button
-              onClick={() => setLang("es")}
-              className={`transition-colors ${
-                lang === "es" ? `${scrolledTextColor} font-semibold` : "text-navy/40"
-              }`}
+              onClick={toggleTheme}
+              className="flex items-center gap-2 text-sm text-navy/60 py-1 px-3 rounded-full border border-navy/15 hover:border-accent/40 transition-colors"
             >
-              ES
+              {theme === "light" ? <MoonIcon /> : <SunIcon />}
+              <span>{theme === "light" ? "Oscuro" : "Claro"}</span>
             </button>
-            <span className="text-navy/30">|</span>
-            <button
-              onClick={() => setLang("en")}
-              className={`transition-colors ${
-                lang === "en" ? `${scrolledTextColor} font-semibold` : "text-navy/40"
-              }`}
-            >
-              EN
-            </button>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
+
+      {/* Mobile backdrop */}
+      {menuOpen && (
+        <div
+          className="fixed inset-0 top-16 bg-navy/15 backdrop-blur-[2px] md:hidden -z-10"
+          onClick={() => setMenuOpen(false)}
+        />
+      )}
     </nav>
   );
 }

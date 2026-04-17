@@ -10,11 +10,11 @@ export default function Experience() {
   const ref = useStaggerReveal();
 
   return (
-    <section className="py-24 bg-cream" id="experiencia">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-12 text-center">
+    <section className="py-16 md:py-24 bg-cream" id="experiencia">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="mb-10 md:mb-12 text-center">
           <p className="text-accent text-sm font-medium mb-1">{t(tr.tag)}</p>
-          <h2 className="font-playfair text-5xl font-bold text-navy">{t(tr.title)}</h2>
+          <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-navy">{t(tr.title)}</h2>
         </div>
 
         <div ref={ref} className="max-w-3xl mx-auto space-y-6">
@@ -26,12 +26,12 @@ export default function Experience() {
                 {i === 2 && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>}
               </div>
               <div className="flex-1">
-                <div className="flex items-start justify-between gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-4">
                   <div>
                     <h4 className="font-playfair font-semibold text-navy">{t(item.title)}</h4>
                     <p className="text-accent text-xs font-medium mt-0.5">{item.org}</p>
                   </div>
-                  <span className="text-xs text-navy/40 font-mono whitespace-nowrap">{item.year}</span>
+                  <span className="text-xs text-navy/40 font-mono">{item.year}</span>
                 </div>
                 <p className="text-navy/60 text-sm mt-2">{t(item.desc)}</p>
               </div>

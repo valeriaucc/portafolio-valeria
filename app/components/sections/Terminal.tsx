@@ -86,12 +86,12 @@ export default function Terminal() {
   };
 
   return (
-    <section className="py-24 bg-navy dark:bg-cream" id="terminal">
-      <div className="always-dark max-w-4xl mx-auto px-6">
+    <section className="py-16 md:py-24 bg-navy dark:bg-cream" id="terminal">
+      <div className="always-dark max-w-4xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="mb-10 text-center">
+        <div className="mb-8 md:mb-10 text-center">
           <span className="text-blush/70 text-sm font-medium">{t(tr.tag)}</span>
-          <h2 className="font-playfair text-5xl font-bold text-cream mt-1 mb-3">{t(tr.title)}</h2>
+          <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-cream mt-1 mb-3">{t(tr.title)}</h2>
           <p className="text-cream/50 text-sm">{t(tr.intro)}</p>
         </div>
 
@@ -110,7 +110,7 @@ export default function Terminal() {
           {/* Terminal body */}
           <div
             ref={outputRef}
-            className="bg-[#0d1117] p-5 h-72 overflow-y-auto cursor-text font-mono text-sm"
+            className="bg-[#0d1117] p-4 sm:p-5 h-60 sm:h-72 overflow-y-auto cursor-text font-mono text-xs sm:text-sm"
             onClick={() => inputRef.current?.focus()}
           >
             {lines.map((line, i) => {

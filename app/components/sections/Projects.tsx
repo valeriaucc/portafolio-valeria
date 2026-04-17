@@ -19,11 +19,11 @@ export default function Projects() {
   const tr = translations.projects;
 
   return (
-    <section className="always-dark py-24 bg-navy" id="proyectos">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-14 text-center">
+    <section className="always-dark py-16 md:py-24 bg-navy" id="proyectos">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="mb-10 md:mb-14 text-center">
           <span className="text-blush/70 text-sm font-medium">{t(tr.tag)}</span>
-          <h2 className="font-playfair text-5xl font-bold text-cream mt-1">{t(tr.title)}</h2>
+          <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-cream mt-1">{t(tr.title)}</h2>
         </div>
 
         <motion.div

@@ -10,11 +10,11 @@ export default function About() {
   const ref = useReveal();
 
   return (
-    <section className="py-24 bg-cream" id="conoceme">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-12 text-center">
+    <section className="py-16 md:py-24 bg-cream" id="conoceme">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="mb-10 md:mb-12 text-center">
           <span className="text-accent text-sm font-medium">{t(tr.tag)}</span>
-          <h2 className="font-playfair text-5xl font-bold text-navy mt-1">{t(tr.title)}</h2>
+          <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-navy mt-1">{t(tr.title)}</h2>
         </div>
 
         <div ref={ref} className="reveal grid md:grid-cols-2 gap-12 items-center">

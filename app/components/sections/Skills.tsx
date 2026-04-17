@@ -64,11 +64,11 @@ export default function Skills() {
   }, []);
 
   return (
-    <section className="py-20 bg-warm -mt-px" ref={sectionRef} id="habilidades">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-12 text-center">
+    <section className="py-14 md:py-20 bg-warm -mt-px" ref={sectionRef} id="habilidades">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="mb-8 md:mb-12 text-center">
           <span className="text-accent text-sm font-medium">{t(tr.tag)}</span>
-          <h2 className="font-playfair text-5xl font-bold text-navy mt-1">{t(tr.title)}</h2>
+          <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-navy mt-1">{t(tr.title)}</h2>
         </div>
 
         <div

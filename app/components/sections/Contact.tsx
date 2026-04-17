@@ -19,11 +19,11 @@ export default function Contact() {
   const tr = translations.contact;
 
   return (
-    <section className="py-24 bg-cream" id="contacto">
-      <div className="max-w-3xl mx-auto px-6">
-        <div className="mb-14 text-center">
+    <section className="py-16 md:py-24 bg-cream" id="contacto">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6">
+        <div className="mb-10 md:mb-14 text-center">
           <span className="text-accent text-sm font-medium">{t(tr.tag)}</span>
-          <h2 className="font-playfair text-5xl font-bold text-navy mt-1">{t(tr.title)}</h2>
+          <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-navy mt-1">{t(tr.title)}</h2>
           <p className="text-navy/50 text-sm mt-3 max-w-md mx-auto">{t(tr.desc)}</p>
         </div>
 

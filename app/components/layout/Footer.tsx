@@ -18,7 +18,7 @@ export default function Footer() {
       {/* Ambient glow */}
       <div className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-40 bg-accent/5 blur-3xl rounded-full" />
 
-      <div className="relative max-w-5xl mx-auto px-6 pt-14 pb-8">
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 pt-10 md:pt-14 pb-8">
 
         {/* Top: brand + nav + social in one row */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-10">
@@ -34,7 +34,7 @@ export default function Footer() {
           </div>
 
           {/* Nav */}
-          <nav className="flex flex-wrap justify-center gap-x-7 gap-y-2">
+          <nav className="flex flex-wrap justify-center gap-x-5 gap-y-2.5">
             {[
               { href: "#inicio",          label: { es: "Inicio",          en: "Home" } },
               { href: "#proyectos",       label: translations.nav.projects },

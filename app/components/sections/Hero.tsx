@@ -85,7 +85,7 @@ export default function Hero() {
       <div className="absolute bottom-16 left-0 w-56 h-56 rounded-full bg-blush/15 blur-2xl animate-pulse pointer-events-none" style={{ animationDelay: "1.8s" }} />
       <div className="absolute top-1/2 left-1/3 w-40 h-40 rounded-full bg-navy-mid/5 blur-3xl animate-pulse pointer-events-none" style={{ animationDelay: "0.9s" }} />
 
-      <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-16 md:gap-20 min-h-[calc(100vh-6rem)]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col-reverse md:flex-row items-center justify-center gap-10 md:gap-20 min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-6rem)] pt-6 md:pt-0">
         {/* Content */}
         <motion.div
           ref={contentRef}
@@ -95,7 +95,7 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
         >
-          <motion.h1 variants={itemVariants} className="font-playfair text-5xl md:text-6xl font-bold text-navy leading-tight mb-6">
+          <motion.h1 variants={itemVariants} className="font-playfair text-4xl sm:text-5xl md:text-6xl font-bold text-navy leading-tight mb-4 md:mb-6 text-center md:text-left">
             <span className="block text-2xl font-inter font-normal text-navy/60 mb-1">
               {t(tr.greeting)}
             </span>
@@ -108,15 +108,15 @@ export default function Hero() {
             </span>
           </motion.h1>
 
-          <motion.p variants={itemVariants} className="text-navy/70 leading-relaxed mb-4 min-h-[3.5rem]">
+          <motion.p variants={itemVariants} className="text-navy/70 leading-relaxed mb-3 min-h-[3rem] text-center md:text-left text-sm sm:text-base">
             <TypewriterText text={t(tr.desc1)} delay={600} />
           </motion.p>
 
-          <motion.p variants={itemVariants} className="text-navy/60 text-sm leading-relaxed mb-8 min-h-[2.5rem]">
+          <motion.p variants={itemVariants} className="text-navy/60 text-xs sm:text-sm leading-relaxed mb-6 md:mb-8 min-h-[2rem] text-center md:text-left">
             <TypewriterText text={t(tr.desc2)} delay={1800} />
           </motion.p>
 
-          <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
+          <motion.div variants={itemVariants} className="flex flex-wrap gap-3 justify-center md:justify-start">
             <MagneticWrapper>
               <a href="#proyectos" onClick={(e) => handleScroll(e, "#proyectos")}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-navy text-cream font-medium rounded-full hover:bg-navy-mid transition-colors duration-200">
@@ -154,7 +154,7 @@ export default function Hero() {
           <div className="absolute inset-0 -m-10 rounded-full bg-accent/10 blur-3xl pointer-events-none" />
           <div className="absolute inset-0 -m-5 rounded-full bg-blush/12 blur-2xl pointer-events-none" />
 
-          <div className="relative w-72 h-72 md:w-80 md:h-80">
+          <div className="relative w-52 h-52 sm:w-64 sm:h-64 md:w-80 md:h-80">
             <span className="absolute -top-4 -left-4 text-accent text-2xl animate-pulse">✦</span>
             <span className="absolute -bottom-4 -right-2 text-blush text-lg animate-pulse delay-700">✦</span>
 
