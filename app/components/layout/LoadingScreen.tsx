@@ -10,7 +10,7 @@ const TR = {
     status:  ["Inicializando...", "Cargando recursos...", "Finalizando...", "Listo"],
     loading: "cargando...",
     ready:   "Sistema listo",
-    hint:    "Presiona Enter para continuar →",
+    hint:    "Toca para continuar · Enter",
   },
   en: {
     label:   "Portfolio",
@@ -19,7 +19,7 @@ const TR = {
     status:  ["Initializing...", "Loading resources...", "Finishing...", "Ready"],
     loading: "loading...",
     ready:   "System ready",
-    hint:    "Press Enter to continue →",
+    hint:    "Tap to continue · Enter",
   },
 };
 
@@ -93,11 +93,13 @@ export default function LoadingScreen({ onDone }: { onDone?: () => void }) {
   return (
     <div
       className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center`}
+      onClick={skip}
       style={{
         backgroundColor: "rgb(var(--cream))",
         opacity: fadeOut ? 0 : 1,
         pointerEvents: fadeOut ? "none" : "auto",
         transition: "opacity 0.6s ease",
+        cursor: "pointer",
       }}
     >
     

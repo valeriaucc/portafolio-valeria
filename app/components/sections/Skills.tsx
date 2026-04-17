@@ -75,7 +75,7 @@ export default function Skills() {
   }, []);
 
   return (
-    <section className="py-14 md:py-20 bg-warm -mt-px" ref={sectionRef} id="habilidades">
+    <section className="py-14 md:py-20 bg-warm -mt-px scroll-mt-20" ref={sectionRef} id="habilidades">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <motion.div
           className="mb-8 md:mb-12 text-center"

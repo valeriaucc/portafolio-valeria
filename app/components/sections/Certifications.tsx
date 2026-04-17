@@ -24,7 +24,7 @@ export default function Certifications() {
   const [preview, setPreview] = useState<string | null>(null);
 
   return (
-    <section className="py-16 md:py-24 bg-cream" id="certificaciones">
+    <section className="py-16 md:py-24 bg-cream scroll-mt-20" id="certificaciones">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <motion.div
           className="mb-10 md:mb-14 text-center"

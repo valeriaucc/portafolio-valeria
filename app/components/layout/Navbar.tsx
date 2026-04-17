@@ -6,10 +6,12 @@ import { useTheme } from "../ThemeProvider";
 import { translations } from "@/lib/i18n";
 
 const navItems = [
-  { href: "#proyectos",    label: translations.nav.projects    },
-  { href: "#experiencia",  label: translations.nav.experience  },
-  { href: "#testimonios",  label: translations.nav.testimonials },
-  { href: "#conoceme",     label: translations.nav.about       },
+  { href: "#conoceme",       label: translations.nav.about          },
+  { href: "#experiencia",    label: translations.nav.experience      },
+  { href: "#proyectos",      label: translations.nav.projects        },
+  { href: "#habilidades",    label: translations.nav.skills          },
+  { href: "#certificaciones",label: translations.nav.certifications  },
+  { href: "#terminal",       label: translations.nav.terminal        },
 ];
 
 function SunIcon()  {
@@ -106,7 +108,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop nav */}
-        <ul className="hidden md:flex items-center gap-6 lg:gap-8">
+        <ul className="hidden lg:flex items-center gap-4 xl:gap-6">
           {navItems.map((item) => (
             <li key={item.href}>
               <a
@@ -163,7 +165,7 @@ export default function Navbar() {
         </ul>
 
         {/* Mobile right controls */}
-        <div className="md:hidden flex items-center gap-2">
+        <div className="lg:hidden flex items-center gap-2">
           <button onClick={toggleTheme} aria-label="Toggle theme"
             className={`p-2 rounded-full transition-colors ${iconColor}`}>
             {theme === "light" ? <MoonIcon /> : <SunIcon />}
@@ -186,8 +188,8 @@ export default function Navbar() {
 
       {/* Mobile menu panel */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-350 ease-[cubic-bezier(0.22,1,0.36,1)]
-          ${menuOpen ? "max-h-[480px] opacity-100" : "max-h-0 opacity-0"}`}
+        className={`lg:hidden overflow-hidden transition-all duration-350 ease-[cubic-bezier(0.22,1,0.36,1)]
+          ${menuOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}
       >
         <div className="bg-[rgb(244,238,229)] dark:bg-[rgb(18,26,44)] backdrop-blur-xl border-t border-black/8 dark:border-white/8 shadow-xl">
           <ul className="flex flex-col px-4 py-2">
@@ -246,7 +248,7 @@ export default function Navbar() {
       {/* Mobile backdrop */}
       {menuOpen && (
         <div
-          className="fixed inset-0 top-16 bg-navy/15 backdrop-blur-[2px] md:hidden -z-10"
+          className="fixed inset-0 top-16 bg-navy/15 backdrop-blur-[2px] lg:hidden -z-10"
           onClick={() => setMenuOpen(false)}
         />
       )}

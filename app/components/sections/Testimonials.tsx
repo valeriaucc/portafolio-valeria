@@ -12,12 +12,12 @@ export default function Testimonials() {
   const tr = translations.testimonials;
 
   return (
-    <section className="py-16 md:py-24 bg-warm" id="testimonios">
+    <section className="py-16 md:py-24 bg-warm scroll-mt-20" id="testimonios">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* Heading */}
         <motion.div
-          className="mb-10 md:mb-14"
+          className="mb-10 md:mb-14 text-center"
           variants={staggerContainer(0.12)}
           initial="hidden" whileInView="visible" viewport={VP}
         >
@@ -31,7 +31,7 @@ export default function Testimonials() {
 
         {/* Cards */}
         <motion.div
-          className="grid md:grid-cols-3 gap-6"
+          className="grid sm:grid-cols-2 md:grid-cols-3 gap-6"
           variants={staggerContainer(0.18, 0.1)}
           initial="hidden" whileInView="visible" viewport={VP}
         >

@@ -86,7 +86,7 @@ export default function Terminal() {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-navy dark:bg-cream" id="terminal">
+    <section className="py-16 md:py-24 bg-navy dark:bg-cream scroll-mt-20" id="terminal">
       <div className="always-dark max-w-4xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="mb-8 md:mb-10 text-center">

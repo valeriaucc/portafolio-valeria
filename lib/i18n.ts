@@ -2,19 +2,22 @@ export type Lang = "es" | "en";
 
 export const translations = {
   nav: {
-    projects:    { es: "Mis Proyectos", en: "My Projects" },
-    experience:  { es: "Experiencia",   en: "Experience" },
-    testimonials:{ es: "Testimonios",   en: "Testimonials" },
-    about:       { es: "Conóceme",      en: "About Me" },
-    contact:     { es: "Contáctame",    en: "Contact Me" },
+    about:          { es: "Sobre mí",        en: "About Me"       },
+    experience:     { es: "Experiencia",     en: "Experience"     },
+    projects:       { es: "Mis Proyectos",   en: "My Projects"    },
+    skills:         { es: "Habilidades",     en: "Skills"         },
+    certifications: { es: "Certificaciones", en: "Certifications" },
+    testimonials:   { es: "Testimonios",     en: "Testimonials"   },
+    terminal:       { es: "Terminal",        en: "Terminal"       },
+    contact:        { es: "Contáctame",      en: "Contact Me"     },
   },
 
   hero: {
     badge:    { es: "Estudiante de Ingeniería de Software", en: "Software Engineering Student" },
     greeting: { es: "Hola, soy",                           en: "Hi, I'm" },
     desc1:    {
-      es: "Soy estudiante de Ingeniería de Software, apasionada por el desarrollo web y el diseño de interfaces modernas. Me enfoco en crear experiencias digitales atractivas, funcionales y visualmente cuidadas, combinando estética, usabilidad y estructura.",
-      en: "I'm a Software Engineering student, passionate about web development and modern interface design. I focus on creating attractive, functional, and visually refined digital experiences, combining aesthetics, usability, and structure.",
+      es: "Estudiante de Ingeniería de Software, apasionada por el desarrollo web y el diseño de interfaces modernas. Me enfoco en crear experiencias digitales atractivas, funcionales y visualmente cuidadas, combinando estética, usabilidad y estructura.",
+      en: "Software Engineering student, passionate about web development and modern interface design. I focus on creating attractive, functional, and visually refined digital experiences, combining aesthetics, usability, and structure.",
     },
     desc2:    {
       es: "Me caracteriza mi interés por el aprendizaje continuo y el crecimiento profesional, explorando constantemente nuevas tecnologías para seguir evolucionando en el mundo digital.",

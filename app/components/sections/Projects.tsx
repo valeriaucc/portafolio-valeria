@@ -22,7 +22,7 @@ export default function Projects() {
   const tr = translations.projects;
 
   return (
-    <section className="always-dark py-16 md:py-24 bg-navy" id="proyectos">
+    <section className="always-dark py-16 md:py-24 bg-navy scroll-mt-20" id="proyectos">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <motion.div
           className="mb-10 md:mb-14 text-center"

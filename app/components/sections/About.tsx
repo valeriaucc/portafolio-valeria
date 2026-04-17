@@ -12,7 +12,7 @@ export default function About() {
   const tr = translations.about;
 
   return (
-    <section className="py-16 md:py-24 bg-cream" id="conoceme">
+    <section className="py-16 md:py-24 bg-cream scroll-mt-20" id="conoceme">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* Heading */}
@@ -31,9 +31,9 @@ export default function About() {
           </motion.h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
 
-          {/* Text — slides from left */}
+          {/* Text — justified, square paragraphs */}
           <motion.div
             className="space-y-5"
             variants={staggerContainer(0.20, 0.15)}
@@ -41,9 +41,9 @@ export default function About() {
             whileInView="visible"
             viewport={VP}
           >
-            <motion.p variants={fadeLeft} className="text-navy/70 leading-relaxed">{t(tr.p1)}</motion.p>
-            <motion.p variants={fadeLeft} className="text-navy/70 leading-relaxed">{t(tr.p2)}</motion.p>
-            <motion.p variants={fadeLeft} className="text-navy/70 leading-relaxed">{t(tr.p3)}</motion.p>
+            <motion.p variants={fadeLeft} className="text-navy/70 leading-relaxed text-justify hyphens-auto">{t(tr.p1)}</motion.p>
+            <motion.p variants={fadeLeft} className="text-navy/70 leading-relaxed text-justify hyphens-auto">{t(tr.p2)}</motion.p>
+            <motion.p variants={fadeLeft} className="text-navy/70 leading-relaxed text-justify hyphens-auto">{t(tr.p3)}</motion.p>
 
             <motion.div
               className="pt-4 space-y-3"

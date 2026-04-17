@@ -12,7 +12,7 @@ export default function Experience() {
   const tr = translations.experience;
 
   return (
-    <section className="py-16 md:py-24 bg-cream" id="experiencia">
+    <section className="py-16 md:py-24 bg-cream scroll-mt-20" id="experiencia">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* Heading */}
