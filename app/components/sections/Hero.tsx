@@ -64,13 +64,13 @@ export default function Hero() {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
     const x = (e.clientX - left) / width - 0.5;
     const y = (e.clientY - top) / height - 0.5;
-    imageRef.current!.style.transform = `translate(${x * 18}px, ${y * 12}px)`;
-    contentRef.current!.style.transform = `translate(${x * -6}px, ${y * -4}px)`;
+    if (imageRef.current) imageRef.current.style.transform = `translate(${x * 18}px, ${y * 12}px)`;
+    if (contentRef.current) contentRef.current.style.transform = `translate(${x * -6}px, ${y * -4}px)`;
   };
 
   const onMouseLeave = () => {
-    imageRef.current!.style.transform = "";
-    contentRef.current!.style.transform = "";
+    if (imageRef.current) imageRef.current.style.transform = "";
+    if (contentRef.current) contentRef.current.style.transform = "";
   };
 
   return (
@@ -87,8 +87,15 @@ export default function Hero() {
 
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-16 md:gap-20 min-h-[calc(100vh-6rem)]">
         {/* Content */}
-        <div ref={contentRef} className="flex-1 max-w-lg" style={{ transition: "transform 0.15s ease-out" }}>
-          <h1 className="font-playfair text-5xl md:text-6xl font-bold text-navy leading-tight mb-6">
+        <motion.div
+          ref={contentRef}
+          className="flex-1 max-w-lg"
+          style={{ transition: "transform 0.15s ease-out" }}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.h1 variants={itemVariants} className="font-playfair text-5xl md:text-6xl font-bold text-navy leading-tight mb-6">
             <span className="block text-2xl font-inter font-normal text-navy/60 mb-1">
               {t(tr.greeting)}
             </span>
@@ -99,12 +106,17 @@ export default function Hero() {
                 </span>
               ))}
             </span>
-          </h1>
+          </motion.h1>
 
-          <p className="text-navy/70 leading-relaxed mb-4">{t(tr.desc1)}</p>
-          <p className="text-navy/60 text-sm leading-relaxed mb-8">{t(tr.desc2)}</p>
+          <motion.p variants={itemVariants} className="text-navy/70 leading-relaxed mb-4 min-h-[3.5rem]">
+            <TypewriterText text={t(tr.desc1)} delay={600} />
+          </motion.p>
 
-          <div className="flex flex-wrap gap-4">
+          <motion.p variants={itemVariants} className="text-navy/60 text-sm leading-relaxed mb-8 min-h-[2.5rem]">
+            <TypewriterText text={t(tr.desc2)} delay={1800} />
+          </motion.p>
+
+          <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
             <MagneticWrapper>
               <a href="#proyectos" onClick={(e) => handleScroll(e, "#proyectos")}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-navy text-cream font-medium rounded-full hover:bg-navy-mid transition-colors duration-200">
