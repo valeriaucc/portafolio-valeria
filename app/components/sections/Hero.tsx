@@ -122,7 +122,7 @@ export default function Hero() {
           <motion.div variants={itemVariants} className="flex justify-center md:justify-start">
             <MagneticWrapper>
               <a
-                href="/cv-valeria.pdf"
+                href="/testimonials/cv-valeria.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-7 py-3 bg-navy text-cream font-medium rounded-full hover:bg-navy-mid transition-colors duration-200 text-sm sm:text-base"
