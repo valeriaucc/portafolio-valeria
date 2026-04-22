@@ -105,7 +105,7 @@ export default function Hero() {
           {/* Desc 1 — justified */}
           <motion.p
             variants={itemVariants}
-            className="text-navy/70 leading-relaxed mb-3 min-h-[4rem] text-justify hyphens-auto text-sm sm:text-base"
+            className="text-navy/88 leading-relaxed mb-3 min-h-[4rem] text-justify hyphens-auto text-sm sm:text-base"
           >
             <TypewriterText text={t(tr.desc1)} delay={500} />
           </motion.p>
@@ -113,7 +113,7 @@ export default function Hero() {
           {/* Desc 2 — justified */}
           <motion.p
             variants={itemVariants}
-            className="text-navy/60 text-sm leading-relaxed mb-7 md:mb-8 text-justify hyphens-auto"
+            className="text-navy/80 text-sm leading-relaxed mb-7 md:mb-8 text-justify hyphens-auto"
           >
             <TypewriterText text={t(tr.desc2)} delay={1600} />
           </motion.p>
@@ -176,8 +176,8 @@ export default function Hero() {
         animate={{ opacity: 0.5, y: 0 }}
         transition={{ delay: 2.5, duration: 0.6 }}
       >
-        <div className="w-5 h-8 rounded-full border border-navy/40 flex items-start justify-center pt-1.5">
-          <div className="w-0.5 h-2 rounded-full bg-navy/60 animate-bounce" />
+        <div className="w-5 h-8 rounded-full border border-navy/55 flex items-start justify-center pt-1.5">
+          <div className="w-0.5 h-2 rounded-full bg-navy/80 animate-bounce" />
         </div>
       </motion.div>
     </section>

@@ -39,7 +39,7 @@ export default function Experience() {
             <motion.div
               key={i}
               variants={fadeLeft}
-              className="flex gap-5 p-6 bg-warm rounded-2xl border border-blush/20 hover:border-blush/50 transition-colors"
+              className="light-surface flex gap-5 p-6 bg-warm rounded-2xl border border-blush/20 hover:border-blush/50 transition-colors"
             >
               <div className="flex-shrink-0 w-10 h-10 rounded-full bg-navy/10 flex items-center justify-center text-navy">
                 {i === 0 && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>}
@@ -52,9 +52,9 @@ export default function Experience() {
                     <h4 className="font-playfair font-semibold text-navy">{t(item.title)}</h4>
                     <p className="text-accent text-xs font-medium mt-0.5">{item.org}</p>
                   </div>
-                  <span className="text-xs text-navy/40 font-mono">{item.year}</span>
+                  <span className="text-xs text-navy/70 font-mono">{item.year}</span>
                 </div>
-                <p className="text-navy/60 text-sm mt-2">{t(item.desc)}</p>
+                <p className="text-navy/82 text-sm mt-2">{t(item.desc)}</p>
               </div>
             </motion.div>
           ))}

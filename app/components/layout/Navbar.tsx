@@ -76,16 +76,16 @@ export default function Navbar() {
    *   dark:  bg warm oscuro → texto white
    */
   const linkColor = scrolled
-    ? "text-cream/80 hover:text-cream dark:text-white/80 dark:hover:text-white"
-    : "text-navy/80 hover:text-navy dark:text-white/75 dark:hover:text-white";
+    ? "text-cream hover:text-white dark:text-white/95 dark:hover:text-white"
+    : "text-navy/95 hover:text-navy dark:text-white/90 dark:hover:text-white";
 
   const logoColor = scrolled
     ? "text-cream dark:text-white"
     : "text-navy dark:text-white";
 
   const iconColor = scrolled
-    ? "text-cream/80 hover:text-cream dark:text-white/80 dark:hover:text-white"
-    : "text-navy/75 hover:text-navy dark:text-white/80 dark:hover:text-white";
+    ? "text-cream hover:text-white dark:text-white/95 dark:hover:text-white"
+    : "text-navy/90 hover:text-navy dark:text-white/90 dark:hover:text-white";
 
   return (
     <nav
@@ -198,7 +198,7 @@ export default function Navbar() {
                 <a
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="flex items-center text-navy/85 dark:text-white/80 font-medium py-3.5 text-base border-b border-black/6 dark:border-white/8 hover:text-accent dark:hover:text-accent transition-colors"
+                  className="flex items-center text-navy dark:text-white/95 font-medium py-3.5 text-base border-b border-black/6 dark:border-white/8 hover:text-accent dark:hover:text-accent transition-colors"
                 >
                   {t(item.label)}
                 </a>
@@ -209,38 +209,28 @@ export default function Navbar() {
               <a
                 href="#contacto"
                 onClick={(e) => handleNavClick(e, "#contacto")}
-                className="flex items-center text-navy/85 dark:text-white/80 font-medium py-3.5 text-base border-b border-black/6 dark:border-white/8 hover:text-accent dark:hover:text-accent transition-colors"
+                className="flex items-center text-navy dark:text-white/95 font-medium py-3.5 text-base border-b border-black/6 dark:border-white/8 hover:text-accent dark:hover:text-accent transition-colors"
               >
                 {t(translations.nav.contact)}
               </a>
             </li>
           </ul>
 
-          {/* Bottom bar: lang + theme */}
-          <div className="flex items-center justify-between px-4 py-4">
+          {/* Bottom bar: lang */}
+          <div className="flex items-center justify-center px-4 py-4">
             <div className="flex items-center gap-3 text-sm font-medium">
               {["es","en"].map((l, i) => (
                 <span key={l} className="flex items-center gap-3">
-                  {i > 0 && <span className="text-black/20 dark:text-white/20">|</span>}
+                  {i > 0 && <span className="text-black/35 dark:text-white/35">|</span>}
                   <button
                     onClick={() => setLang(l as "es" | "en")}
-                    className={`transition-colors ${lang === l ? "text-accent font-semibold" : "text-navy/50 dark:text-white/50"}`}
+                    className={`transition-colors ${lang === l ? "text-accent font-semibold" : "text-navy/80 dark:text-white/80"}`}
                   >
                     {l.toUpperCase()}
                   </button>
                 </span>
               ))}
             </div>
-            <button
-              onClick={toggleTheme}
-              className="flex items-center gap-2 text-sm text-navy/70 dark:text-white/70 py-1 px-3 rounded-full border border-black/15 dark:border-white/15 hover:border-accent/50 transition-colors"
-            >
-              {theme === "light" ? <MoonIcon /> : <SunIcon />}
-              <span>{theme === "light"
-                ? (lang === "es" ? "Oscuro" : "Dark")
-                : (lang === "es" ? "Claro"  : "Light")}
-              </span>
-            </button>
           </div>
         </div>
       </div>

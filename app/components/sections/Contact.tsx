@@ -35,7 +35,7 @@ export default function Contact() {
           <motion.h2 variants={headingTitle} className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-navy mt-1">
             {t(tr.title)}
           </motion.h2>
-          <motion.p variants={headingTitle} className="text-navy/50 text-sm mt-3 max-w-md mx-auto">
+          <motion.p variants={headingTitle} className="text-navy/78 text-sm mt-3 max-w-md mx-auto">
             {t(tr.desc)}
           </motion.p>
         </motion.div>
@@ -47,27 +47,27 @@ export default function Contact() {
           whileInView="visible"
           viewport={{ once: false, margin: "-60px" }}
         >
-          <motion.div variants={itemVariants} className="flex items-center gap-4 p-5 bg-warm rounded-2xl border border-blush/20 hover:border-blush/50 transition-colors">
+          <motion.div variants={itemVariants} className="light-surface flex items-center gap-4 p-5 bg-warm rounded-2xl border border-blush/20 hover:border-blush/50 transition-colors">
             <div className="w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center text-navy flex-shrink-0">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
-            <span className="text-navy/70 text-sm">Colombia — Pasto, Nariño</span>
+            <span className="text-navy/88 text-sm">Colombia — Pasto, Nariño</span>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="flex items-center gap-4 p-5 bg-warm rounded-2xl border border-blush/20 hover:border-blush/50 transition-colors">
+          <motion.div variants={itemVariants} className="light-surface flex items-center gap-4 p-5 bg-warm rounded-2xl border border-blush/20 hover:border-blush/50 transition-colors">
             <div className="w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center text-navy flex-shrink-0">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
-            <a href="mailto:luzvaleria3026@hotmail.com" className="text-navy/70 hover:text-navy transition-colors text-sm">
+            <a href="mailto:luzvaleria3026@hotmail.com" className="text-navy/88 hover:text-navy transition-colors text-sm">
               luzvaleria3026@hotmail.com
             </a>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="flex items-center gap-4 p-5 bg-warm rounded-2xl border border-blush/20 hover:border-blush/50 transition-colors">
+          <motion.div variants={itemVariants} className="light-surface flex items-center gap-4 p-5 bg-warm rounded-2xl border border-blush/20 hover:border-blush/50 transition-colors">
             <div className="w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center text-navy flex-shrink-0">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
-            <span className="text-navy/70 text-sm">{t(tr.availability)}</span>
+            <span className="text-navy/88 text-sm">{t(tr.availability)}</span>
           </motion.div>
 
           <motion.div variants={itemVariants} className="flex flex-wrap gap-3 pt-2 justify-center">

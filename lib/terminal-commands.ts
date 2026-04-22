@@ -132,7 +132,7 @@ valeriagongora3026@gmail.com
 
 🎓 Ingeniería de Software
    └── Universidad Cooperativa de Colombia
-   └── 2024 – Actualidad
+   └── 2024 – Actual
 
 📜 Certificación Inglés B1
    └── Evolve Your English

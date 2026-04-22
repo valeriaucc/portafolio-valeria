@@ -40,16 +40,16 @@ export default function Testimonials() {
               key={i}
               variants={scaleIn}
               whileHover={{ y: -6, transition: { duration: 0.25 } }}
-              className="bg-cream rounded-2xl p-8 border border-blush/30 hover:border-accent/30 hover:shadow-lg transition-shadow duration-300 flex flex-col"
+              className="light-surface bg-cream rounded-2xl p-8 border border-blush/30 hover:border-accent/30 hover:shadow-lg transition-shadow duration-300 flex flex-col"
             >
-              <span className="font-playfair text-6xl text-accent/30 leading-none mb-4">"</span>
-              <p className="text-navy/70 leading-relaxed flex-1 text-sm">{t(item.text)}</p>
+              <span className="font-playfair text-6xl text-accent/55 leading-none mb-4">"</span>
+              <p className="text-navy/85 leading-relaxed flex-1 text-sm">{t(item.text)}</p>
               <div className="mt-6 flex items-center gap-3 pt-5 border-t border-blush/30">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={item.image} alt={item.author} className="w-9 h-9 rounded-full object-cover flex-shrink-0" />
                 <div>
                   <h5 className="font-semibold text-navy text-sm">{item.author}</h5>
-                  <span className="text-navy/50 text-xs">{t(item.role)}</span>
+                  <span className="text-navy/72 text-xs">{t(item.role)}</span>
                 </div>
               </div>
             </motion.div>

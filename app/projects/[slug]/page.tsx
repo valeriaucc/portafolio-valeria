@@ -88,7 +88,7 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
     <main className="min-h-screen bg-cream pt-28 pb-20">
       <div className="max-w-3xl mx-auto px-6">
         {/* Back */}
-        <Link href="/#proyectos" className="inline-flex items-center gap-2 text-navy/40 hover:text-navy text-sm mb-10 transition-colors">
+        <Link href="/#proyectos" className="inline-flex items-center gap-2 text-navy/72 hover:text-navy text-sm mb-10 transition-colors">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
           Volver a proyectos
         </Link>
@@ -103,7 +103,7 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
           </h1>
           <div className="flex flex-wrap gap-2">
             {project.tech.map((t) => (
-              <span key={t} className="text-xs px-3 py-1 bg-warm border border-blush/30 text-navy/60 rounded-full">
+              <span key={t} className="text-xs px-3 py-1 bg-warm border border-blush/30 text-navy/82 rounded-full">
                 {t}
               </span>
             ))}
@@ -112,21 +112,21 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
 
         {/* Case study sections */}
         <div className="space-y-10">
-          <div className="p-7 bg-warm rounded-2xl border border-blush/30">
+          <div className="light-surface p-7 bg-warm rounded-2xl border border-blush/30">
             <h2 className="font-playfair text-xl font-semibold text-navy mb-3">
               🎯 El problema
             </h2>
-            <p className="text-navy/70 leading-relaxed">{study.problem.es}</p>
+            <p className="text-navy/84 leading-relaxed">{study.problem.es}</p>
           </div>
 
-          <div className="p-7 bg-warm rounded-2xl border border-blush/30">
+          <div className="light-surface p-7 bg-warm rounded-2xl border border-blush/30">
             <h2 className="font-playfair text-xl font-semibold text-navy mb-3">
               💡 La solución
             </h2>
-            <p className="text-navy/70 leading-relaxed">{study.solution.es}</p>
+            <p className="text-navy/84 leading-relaxed">{study.solution.es}</p>
           </div>
 
-          <div className="p-7 bg-warm rounded-2xl border border-blush/30">
+          <div className="light-surface p-7 bg-warm rounded-2xl border border-blush/30">
             <h2 className="font-playfair text-xl font-semibold text-navy mb-4">
               📚 Aprendizajes clave
             </h2>
@@ -134,7 +134,7 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
               {study.learnings.es.map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <span className="text-accent mt-0.5 text-xs">◆</span>
-                  <span className="text-navy/70 text-sm leading-relaxed">{item}</span>
+                  <span className="text-navy/84 text-sm leading-relaxed">{item}</span>
                 </li>
               ))}
             </ul>

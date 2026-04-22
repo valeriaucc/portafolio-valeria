@@ -51,17 +51,17 @@ export default function Certifications() {
               key={i}
               variants={cardVariants}
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              className="group relative flex flex-col p-6 bg-warm rounded-2xl border border-blush/30
+              className="group light-surface relative flex flex-col p-6 bg-warm rounded-2xl border border-blush/30
                          hover:border-accent/40 hover:shadow-xl hover:shadow-accent/8 transition-shadow duration-300"
             >
               {/* Logo */}
-              <div className="w-full h-24 rounded-xl border border-blush/30 mb-4 overflow-hidden group-hover:border-accent/40 transition-colors duration-200">
+              <div className="light-inset w-full h-24 rounded-xl border border-blush/30 mb-4 overflow-hidden group-hover:border-accent/40 transition-colors duration-200">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={item.image} alt={item.issuer} className="w-full h-full object-cover" />
               </div>
 
               {/* Year pill */}
-              <span className="absolute top-5 right-5 text-xs font-mono text-navy/40 bg-cream/80 px-2 py-0.5 rounded-full border border-blush/20">
+              <span className="absolute top-5 right-5 text-xs font-mono text-navy/70 bg-cream/90 px-2 py-0.5 rounded-full border border-blush/20">
                 {item.year}
               </span>
 
@@ -69,7 +69,7 @@ export default function Certifications() {
                 {t(item.title)}
               </h3>
               <p className="text-accent text-xs font-medium mb-3">{item.issuer}</p>
-              <p className="text-navy/60 text-xs leading-relaxed flex-1">{t(item.desc)}</p>
+              <p className="text-navy/82 text-xs leading-relaxed flex-1">{t(item.desc)}</p>
 
               <div className="mt-4 flex flex-col gap-2">
                 {item.link && (
@@ -77,7 +77,7 @@ export default function Certifications() {
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs text-navy/50 hover:text-accent transition-colors duration-200"
+                    className="inline-flex items-center gap-1.5 text-xs text-navy/78 hover:text-accent transition-colors duration-200"
                   >
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
@@ -91,7 +91,7 @@ export default function Certifications() {
                 {"certificate" in item && item.certificate && (
                   <button
                     onClick={() => setPreview(item.certificate as string)}
-                    className="inline-flex items-center gap-1.5 text-xs text-navy/50 hover:text-accent transition-colors duration-200"
+                    className="inline-flex items-center gap-1.5 text-xs text-navy/78 hover:text-accent transition-colors duration-200"
                   >
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>

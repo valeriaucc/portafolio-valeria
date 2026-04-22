@@ -16,7 +16,7 @@ const LOGOS: Record<string, string> = {
   "UI / UX":       "https://cdn.simpleicons.org/figma/1b2a41",
   "Git & GitHub":  "https://cdn.simpleicons.org/github/1b2a41",
   "AWS":           "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg",
-  "SQL":           "https://cdn.simpleicons.org/mysql/1b2a41",
+  "MySQL":         "https://cdn.simpleicons.org/mysql/1b2a41",
   "R":             "https://cdn.simpleicons.org/r/1b2a41",
   "Draw.io / UML": "https://cdn.simpleicons.org/diagramsdotnet/1b2a41",
   "IoT / ESP32":   "https://cdn.simpleicons.org/espressif/1b2a41",
@@ -107,7 +107,7 @@ export default function Skills() {
           {tr.items.map((skill) => (
             <div
               key={skill.name}
-              className="skill-card flex-shrink-0 flex items-center justify-center p-5 bg-cream dark:bg-navy-mid/20 rounded-2xl border border-blush/30 dark:border-cream/10 w-24 h-24
+              className="skill-card light-surface flex-shrink-0 flex flex-col items-center justify-center gap-2 px-3 py-4 bg-cream dark:bg-navy-mid/20 rounded-2xl border border-blush/30 dark:border-cream/10 w-24 h-28
                          hover:border-accent/50 hover:shadow-[0_4px_20px_rgba(201,149,108,0.18)] transition-all duration-300"
               style={{ opacity: 0, transform: "translateY(20px)", transition: "opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease, border-color 0.3s ease" }}
             >
@@ -120,11 +120,14 @@ export default function Skills() {
                 className="w-10 h-10 object-contain dark:invert dark:opacity-90"
                 draggable={false}
               />
+              <span className="text-navy/90 dark:!text-white text-[10px] font-medium text-center leading-tight">
+                {skill.name}
+              </span>
             </div>
           ))}
         </div>
 
-        <p className="text-navy/30 text-xs mt-3 text-center tracking-wide">
+        <p className="text-navy/60 text-xs mt-3 text-center tracking-wide">
           {lang === "es" ? "← Arrastra para explorar →" : "← Drag to explore →"}
         </p>
       </div>
