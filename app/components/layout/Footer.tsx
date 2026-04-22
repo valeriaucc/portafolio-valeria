@@ -88,7 +88,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-center">
           <p className={`text-xs ${isDark ? "text-cream/72" : "text-navy/65"}`}>{t(tr.rights)}</p>
           <p className={`text-xs font-mono tracking-widest uppercase ${isDark ? "text-cream/62" : "text-navy/55"}`}>
-            {t({ es: "Diseñado en Pasto, Colombia", en: "Crafted with ✦ and code" })}
+            Disenado en Pasto, Colombia
           </p>
         </div>
 
@@ -96,3 +96,4 @@ export default function Footer() {
     </footer>
   );
 }
+
